@@ -19,6 +19,9 @@ public class ScrollLevels : MonoBehaviour
     [SerializeField]
     private Text levelText;
 
+    [SerializeField]
+    private AudioSource buttonSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +83,7 @@ public class ScrollLevels : MonoBehaviour
         if(level <= maxLevel)
         {
             SceneManager.LoadScene("Level " + level.ToString());
+            buttonSound.Play();
         }
     }
 }

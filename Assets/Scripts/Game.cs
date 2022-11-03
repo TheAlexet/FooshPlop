@@ -23,12 +23,14 @@ public class Game : MonoBehaviour
     [SerializeField]
     private GameObject fishMenu;
 
+    [SerializeField]
+    private AudioSource buttonSound;
+
     // Start is called before the first frame update
     void Start()
     {
        initializePlayer();
        initializeAcornsText();
-       //initializeLevel();
     }
 
     // Update is called once per frame
@@ -49,13 +51,6 @@ public class Game : MonoBehaviour
         acornsText.text = player.getAcorns().ToString();
     }
 
-    void initializeLevel()
-    {
-        string levelName = "Level" + player.getMaxLevel().ToString();
-        GameObject instantiatedLevel = Instantiate((GameObject)Resources.Load(levelName), new Vector3(0, 0, 0), Quaternion.identity);
-        instantiatedLevel.transform.SetParent(GameObject.Find("MainMenu").transform);
-    }
-
     public void changeMenu(string newMenu)
     {
         if(menu != newMenu)
@@ -63,6 +58,25 @@ public class Game : MonoBehaviour
             getMenu(menu).SetActive(false);
             getMenu(newMenu).SetActive(true);
             menu = newMenu;
+            buttonSound.Play();
+            if(menu == "character")
+            {
+                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
+                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+            }
+            else if(menu == "main")
+            {
+                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
+                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+            }
+            else if(menu == "fish")
+            {
+                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
+            }
         }
     }
 
