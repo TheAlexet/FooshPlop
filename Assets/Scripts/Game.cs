@@ -9,6 +9,9 @@ public class Game : MonoBehaviour
     string menu = "main";
 
     [SerializeField]
+    private Database db;
+
+    [SerializeField]
     private Text acornsText;
 
     [SerializeField]
@@ -25,6 +28,7 @@ public class Game : MonoBehaviour
     {
        initializePlayer();
        initializeAcornsText();
+       //initializeLevel();
     }
 
     // Update is called once per frame
@@ -36,12 +40,20 @@ public class Game : MonoBehaviour
     void initializePlayer()
     {
         player = new Player();
-        player.setAcorns(45);
+        player.setAcorns(db.getAcorns());
+        player.setMaxLevel(db.getMaxLevel());
     }
 
     void initializeAcornsText()
     {
         acornsText.text = player.getAcorns().ToString();
+    }
+
+    void initializeLevel()
+    {
+        string levelName = "Level" + player.getMaxLevel().ToString();
+        GameObject instantiatedLevel = Instantiate((GameObject)Resources.Load(levelName), new Vector3(0, 0, 0), Quaternion.identity);
+        instantiatedLevel.transform.SetParent(GameObject.Find("MainMenu").transform);
     }
 
     public void changeMenu(string newMenu)
