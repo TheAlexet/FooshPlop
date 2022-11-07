@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    float gameTime = 60; //In seconds
-    bool pause = true;    
+    float gameTime = 5; //In seconds
+    bool pause = true;
+    int fishCaught = 0;
+    int acornsWon = 0;
 
     [SerializeField]
     private Database db;
@@ -16,10 +18,22 @@ public class Game : MonoBehaviour
     private Text chronoText;
 
     [SerializeField]
+    private AudioSource levelSound;
+
+    [SerializeField]
     private AudioSource buttonSound;
 
     [SerializeField]
     private GameObject exitMenu;
+
+    [SerializeField]
+    private GameObject finishMenu;
+
+    [SerializeField]
+    private Text finishResultText;
+
+    [SerializeField]
+    private Text fishCaughtText;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +58,7 @@ public class Game : MonoBehaviour
             }
             else
             {
-                gameTime = 0;
-                pause = true;
+                finishGame();
             }
         }
     }
@@ -58,6 +71,15 @@ public class Game : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         chronoText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    }
+
+    void finishGame()
+    {
+        gameTime = 0;
+        pauseGame();
+        finishResultText.text = "Fish: " + fishCaught + "\nAcorns: " + acornsWon;
+        db.setAcorns(db.getAcorns() + acornsWon);
+        finishMenu.SetActive(true);
     }
 
     public void exitHandler()
@@ -96,6 +118,7 @@ public class Game : MonoBehaviour
         if(!pause) 
         {
             pause = true;
+            levelSound.Pause();
         }
     }
 
@@ -104,6 +127,14 @@ public class Game : MonoBehaviour
         if(pause) 
         {
             pause = false;
+            levelSound.Play();
         }
+    }
+
+    void fishCaughtHandler()
+    {
+        fishCaught += 1;
+        acornsWon += 5;
+        fishCaughtText.text = fishCaught.ToString();
     }
 }
