@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    int gameTime = 60; //In seconds
-    float timeLeft;
+    float gameTime = 60; //In seconds
     bool pause = true;    
 
     [SerializeField]
@@ -31,13 +30,34 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        controlChrono();
+    }
+
+    void controlChrono()
+    {
         if(!pause)
         {
-            if(timeLeft > 0)
+            if(gameTime > 0)
             {
-
+                gameTime -= Time.deltaTime;
+                updateChronoLabel(gameTime);
+            }
+            else
+            {
+                gameTime = 0;
+                pause = true;
             }
         }
+    }
+
+    void updateChronoLabel(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+        chronoText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
     }
 
     public void exitHandler()
