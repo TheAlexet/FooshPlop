@@ -2,96 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    Player player;
-    string menu = "main";
+    int gameTime = 60; //In seconds
+    float timeLeft;
+    bool pause = true;    
 
     [SerializeField]
     private Database db;
 
     [SerializeField]
-    private Text acornsText;
-
-    [SerializeField]
-    private GameObject characterMenu;
-
-    [SerializeField]
-    private GameObject mainMenu;
-
-    [SerializeField]
-    private GameObject fishMenu;
+    private Text chronoText;
 
     [SerializeField]
     private AudioSource buttonSound;
 
+    [SerializeField]
+    private GameObject exitMenu;
+
     // Start is called before the first frame update
     void Start()
     {
-       initializePlayer();
-       initializeAcornsText();
+        pause = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void initializePlayer()
-    {
-        player = new Player();
-        player.setAcorns(db.getAcorns());
-        player.setMaxLevel(db.getMaxLevel());
-    }
-
-    void initializeAcornsText()
-    {
-        acornsText.text = player.getAcorns().ToString();
-    }
-
-    public void changeMenu(string newMenu)
-    {
-        if(menu != newMenu)
+        if(!pause)
         {
-            getMenu(menu).SetActive(false);
-            getMenu(newMenu).SetActive(true);
-            menu = newMenu;
-            buttonSound.Play();
-            if(menu == "character")
+            if(timeLeft > 0)
             {
-                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
-                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-            }
-            else if(menu == "main")
-            {
-                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
-                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-            }
-            else if(menu == "fish")
-            {
-                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
+
             }
         }
     }
 
-    private GameObject getMenu(string menuName)
+    public void exitHandler()
     {
-        switch(menuName)
+        buttonSound.Play(); 
+        if(!pause)
         {
-            case "character":
-                return characterMenu;
-            case "main":
-                return mainMenu;
-            case "fish":
-                return fishMenu;
-             default:
-                return mainMenu;                    
+            pause = true;
+            exitMenu.SetActive(true);
+            pauseGame();
+        } 
+        else 
+        {
+            pause = false;
+            exitMenu.SetActive(false);
+            resumeGame();
+        }
+    }
+
+    public void exit()
+    {
+        buttonSound.Play();    
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void closeExitMenu()
+    {
+        buttonSound.Play(); 
+        pause = false;
+        exitMenu.SetActive(false);
+        resumeGame();
+    }
+
+    void pauseGame()
+    {
+        if(!pause) 
+        {
+            pause = true;
+        }
+    }
+
+    void resumeGame()
+    {
+        if(pause) 
+        {
+            pause = false;
         }
     }
 }
