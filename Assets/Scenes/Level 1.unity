@@ -573,6 +573,7 @@ MonoBehaviour:
   finishMenu: {fileID: 1459998665}
   finishResultText: {fileID: 122266232}
   fishCaughtText: {fileID: 1014606821}
+  fishingAnimator: {fileID: 1242901632}
 --- !u!82 &118454422
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2484,6 +2485,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 34.959003, y: 0, z: 0}
+--- !u!95 &1242901632 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ab2912eaf8bcbf541b8d5b975f277eec,
+    type: 3}
+  m_PrefabInstance: {fileID: 247964984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1273638401
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,10 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    float gameTime = 60; //In seconds
-    bool pause = true;
-    int fishCaught = 0;
-    int acornsWon = 0;
+    float gameTime = 60; //Duration of the game, in seconds
+    bool pause = true; //If the game is paused
+    int fishCaught = 0; //Fishes caught during the game
+    int acornsWon = 0; //Acorns won during the game
+    string phase = "idle"; //Fishing phase
+    DateTime prevTime; //To calculate the time the player has for shaking
+    int shakes = 0; //Number of shakes done
+    bool positiveShake = true; //To count the shakes
+    bool fishBit = false; //If the fish bit the hook
 
     [SerializeField]
     private Database db;
@@ -35,10 +41,14 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Text fishCaughtText;
 
+    [SerializeField]
+    private Animator fishingAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         pause = false;
+        Input.gyro.enabled = true;
     }
 
     // Update is called once per frame
@@ -50,7 +60,62 @@ public class Game : MonoBehaviour
 
     void controlFishingRod()
     {
-        print(Input.acceleration);
+        if(phase == "idle")
+        {
+            if(Input.gyro.rotationRateUnbiased.x > 3)
+            {
+                phase = "fishingCast1";
+                fishingAnimator.SetTrigger("ToFishingCast1");
+                prevTime = DateTime.Now;
+            }
+        }
+        if(phase == "fishingCast1")
+        {
+            if(Input.gyro.rotationRateUnbiased.x < -3)
+            {
+                phase = "fishingCast2";
+                fishingAnimator.SetTrigger("ToFishingCast2");
+            }
+        }
+        if(phase == "fishingCast2")
+        {
+            phase = "fishing";
+            //fishingAnimator.SetTrigger("ToFishing");
+        }
+        if(phase == "fishing")
+        {
+            if((DateTime.Now - prevTime).TotalSeconds >= 0 && (DateTime.Now - prevTime).TotalSeconds <= 3)
+            {
+                if(positiveShake && Input.gyro.rotationRateUnbiased.z > 3)
+                {
+                    positiveShake = false;
+                    shakes += 1;
+                    fishingAnimator.SetTrigger("ToFishingRecover");
+                }
+                else if(!positiveShake && Input.gyro.rotationRateUnbiased.z < -3)
+                {
+                    positiveShake = true;
+                    shakes += 1;
+                    fishingAnimator.SetTrigger("ToFishingRecover");
+                }
+                else if(!fishBit && shakes >= 20)
+                {
+                    phase = "fishingRecover";
+                    fishingAnimator.SetTrigger("ToFishingRecover");
+                }
+            }
+            else
+            {
+                prevTime = DateTime.Now;
+                shakes = 0;
+            }
+        }
+        if(phase == "fishingRecover")
+        {
+            shakes = 0;
+            phase = "idle";
+            fishingAnimator.SetTrigger("ToFishingIdle");
+        }
     }
 
     void controlChrono()
