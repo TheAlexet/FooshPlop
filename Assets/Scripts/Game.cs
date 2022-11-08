@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    float gameTime = 5; //In seconds
+    float gameTime = 60; //In seconds
     bool pause = true;
     int fishCaught = 0;
     int acornsWon = 0;
@@ -44,7 +44,13 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        controlFishingRod();
         controlChrono();
+    }
+
+    void controlFishingRod()
+    {
+        print(Input.acceleration);
     }
 
     void controlChrono()
