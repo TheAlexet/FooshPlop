@@ -44,6 +44,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Animator fishingAnimator;
 
+    [SerializeField]
+    private GameObject fishHook;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,29 +65,93 @@ public class Game : MonoBehaviour
     {
         if(phase == "idle")
         {
-            if(Input.gyro.rotationRateUnbiased.x > 3)
-            {
-                phase = "fishingCast1";
-                fishingAnimator.SetTrigger("ToFishingCast1");
-                prevTime = DateTime.Now;
-            }
+            idlePhase();
         }
-        if(phase == "fishingCast1")
+        else if(phase == "fishingCast1")
         {
-            if(Input.gyro.rotationRateUnbiased.x < -3)
-            {
-                phase = "fishingCast2";
-                fishingAnimator.SetTrigger("ToFishingCast2");
-            }
+            fishingCast1Phase();
         }
-        if(phase == "fishingCast2")
+        else if(phase == "fishingCast2")
         {
-            phase = "fishing";
-            //fishingAnimator.SetTrigger("ToFishing");
+            fishingCast2Phase();
         }
-        if(phase == "fishing")
+        else if(phase == "fishing")
         {
-            if((DateTime.Now - prevTime).TotalSeconds >= 0 && (DateTime.Now - prevTime).TotalSeconds <= 3)
+            fishingPhase();
+        }
+        else if(phase == "fishingRecover")
+        {
+            Invoke("fishingRecoverPhase", 3f);
+        }
+    }
+
+    void idlePhase()
+    {
+        if(Input.gyro.rotationRateUnbiased.x > 3)
+        {
+            fishingAnimator.SetTrigger("ToFishingCast1");
+            phase = "fishingCast1";
+            prevTime = DateTime.Now;
+        }
+    }
+
+    /**
+    Fish hook min and max coordinates: 
+        x (z = -1): [-2.7, 2.7] (Left-Right)
+        x (z = -7,2): [-1.2, 1.2] (Left-Right)
+        y: 0.15 (Height)
+        z: [-1, -7,2] (Far)
+    Gyroscope min and max values:
+        x (influences Far): [-3, -7]
+        y (influences Left-Right): [3, -3]
+        z: nothing
+    */
+    void fishingCast1Phase()
+    {
+        if(Input.gyro.rotationRateUnbiased.x < -3)
+        {
+            fishingAnimator.SetTrigger("ToFishingCast2");
+            float farValue = Math.Abs(Input.gyro.rotationRateUnbiased.x) - 3f; //Between 0 and > 4
+            if(farValue > 4f) farValue = 4f; //Between 0 and 4
+            farValue *= 1.55f; //(7,2 - 1) / (7 - 4) //Between 0 and 6,2
+            float auxiliarFarValue = farValue;
+            farValue = -1f -farValue; //Between -1 and -7,2
+            float leftRightValue = Input.gyro.rotationRateUnbiased.x; //Between < -3 and > 3
+            if(leftRightValue > 3) leftRightValue = 3;
+            if(leftRightValue < -3) leftRightValue = -3;
+            leftRightValue += 3f; //Between 0 and 6
+            auxiliarFarValue *= (1.5f/6.2f); //(2.7 - 1.2) / (6.2 - 0) Between 0 and 1.5
+            auxiliarFarValue += 1.2f; //Between 1.2 and 2.7
+            leftRightValue *= ((auxiliarFarValue + auxiliarFarValue)/6); // (2.7 + 2.7) / (3 + 3) Between 0 and 5.4
+            leftRightValue -= auxiliarFarValue; //Between [-2.7 - -1.2} and [2.7 - 1.2]
+            fishHook.transform.position = new Vector3(leftRightValue, 10f, farValue);
+            Invoke("throwFishingHook", 2.5f);
+            print(Input.gyro.rotationRateUnbiased);
+            phase = "fishingCast2";
+        }
+    }
+
+    void throwFishingHook()
+    {
+        fishHook.transform.position = new Vector3(fishHook.transform.position.x, 0.15f, fishHook.transform.position.z);
+    }
+
+    void fishingCast2Phase()
+    {
+        fishingAnimator.SetTrigger("ToFishing");
+        phase = "fishing";
+    }
+
+    void fishingPhase()
+    {
+        if(!fishBit && Input.gyro.rotationRateUnbiased.x > 3)
+        {
+            fishingAnimator.SetTrigger("ToFishingRecover");
+            phase = "fishingRecover";
+        }
+        else
+        {
+            /*if((DateTime.Now - prevTime).TotalSeconds >= 0 && (DateTime.Now - prevTime).TotalSeconds <= 3)
             {
                 if(positiveShake && Input.gyro.rotationRateUnbiased.z > 3)
                 {
@@ -108,14 +175,16 @@ public class Game : MonoBehaviour
             {
                 prevTime = DateTime.Now;
                 shakes = 0;
-            }
+            }*/
         }
-        if(phase == "fishingRecover")
-        {
-            shakes = 0;
-            phase = "idle";
-            fishingAnimator.SetTrigger("ToFishingIdle");
-        }
+    }
+
+    void fishingRecoverPhase()
+    {
+        fishingAnimator.SetTrigger("ToFishingIdle");
+        shakes = 0;
+        fishHook.transform.position = new Vector3(0f, 10f, 0f);
+        phase = "idle";
     }
 
     void controlChrono()
