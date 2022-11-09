@@ -54,51 +54,53 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controlFishingRod();
+        // controlFishingRod();
         controlChrono();
     }
 
     void controlFishingRod()
     {
-        if(phase == "idle")
+        if (phase == "idle")
         {
-            if(Input.gyro.rotationRateUnbiased.x > 3)
+            if (Input.gyro.rotationRateUnbiased.x > 3)
             {
                 phase = "fishingCast1";
-                fishingAnimator.SetTrigger("ToFishingCast1");
+                // fishingAnimator.SetTrigger("ToFishingCast1");
+                fishingAnimator.SetTrigger("Cast");
                 prevTime = DateTime.Now;
             }
         }
-        if(phase == "fishingCast1")
+        if (phase == "fishingCast1")
         {
-            if(Input.gyro.rotationRateUnbiased.x < -3)
+            if (Input.gyro.rotationRateUnbiased.x < -3)
             {
                 phase = "fishingCast2";
-                fishingAnimator.SetTrigger("ToFishingCast2");
+                // fishingAnimator.SetTrigger("ToFishingCast2");
+                fishingAnimator.SetTrigger("Catch");
             }
         }
-        if(phase == "fishingCast2")
+        if (phase == "fishingCast2")
         {
             phase = "fishing";
             //fishingAnimator.SetTrigger("ToFishing");
         }
-        if(phase == "fishing")
+        if (phase == "fishing")
         {
-            if((DateTime.Now - prevTime).TotalSeconds >= 0 && (DateTime.Now - prevTime).TotalSeconds <= 3)
+            if ((DateTime.Now - prevTime).TotalSeconds >= 0 && (DateTime.Now - prevTime).TotalSeconds <= 3)
             {
-                if(positiveShake && Input.gyro.rotationRateUnbiased.z > 3)
+                if (positiveShake && Input.gyro.rotationRateUnbiased.z > 3)
                 {
                     positiveShake = false;
                     shakes += 1;
                     fishingAnimator.SetTrigger("ToFishingRecover");
                 }
-                else if(!positiveShake && Input.gyro.rotationRateUnbiased.z < -3)
+                else if (!positiveShake && Input.gyro.rotationRateUnbiased.z < -3)
                 {
                     positiveShake = true;
                     shakes += 1;
                     fishingAnimator.SetTrigger("ToFishingRecover");
                 }
-                else if(!fishBit && shakes >= 20)
+                else if (!fishBit && shakes >= 20)
                 {
                     phase = "fishingRecover";
                     fishingAnimator.SetTrigger("ToFishingRecover");
@@ -110,7 +112,7 @@ public class Game : MonoBehaviour
                 shakes = 0;
             }
         }
-        if(phase == "fishingRecover")
+        if (phase == "fishingRecover")
         {
             shakes = 0;
             phase = "idle";
@@ -120,9 +122,9 @@ public class Game : MonoBehaviour
 
     void controlChrono()
     {
-        if(!pause)
+        if (!pause)
         {
-            if(gameTime > 0)
+            if (gameTime > 0)
             {
                 gameTime -= Time.deltaTime;
                 updateChronoLabel(gameTime);
@@ -155,14 +157,14 @@ public class Game : MonoBehaviour
 
     public void exitHandler()
     {
-        buttonSound.Play(); 
-        if(!pause)
+        buttonSound.Play();
+        if (!pause)
         {
             pause = true;
             exitMenu.SetActive(true);
             pauseGame();
-        } 
-        else 
+        }
+        else
         {
             pause = false;
             exitMenu.SetActive(false);
@@ -172,13 +174,13 @@ public class Game : MonoBehaviour
 
     public void exit()
     {
-        buttonSound.Play();    
+        buttonSound.Play();
         SceneManager.LoadScene("Menu");
     }
 
     public void closeExitMenu()
     {
-        buttonSound.Play(); 
+        buttonSound.Play();
         pause = false;
         exitMenu.SetActive(false);
         resumeGame();
@@ -186,7 +188,7 @@ public class Game : MonoBehaviour
 
     void pauseGame()
     {
-        if(!pause) 
+        if (!pause)
         {
             pause = true;
             levelSound.Pause();
@@ -195,7 +197,7 @@ public class Game : MonoBehaviour
 
     void resumeGame()
     {
-        if(pause) 
+        if (pause)
         {
             pause = false;
             levelSound.Play();
