@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SampleArea : MonoBehaviour
+public class PolygonArea : MonoBehaviour
 {
-    [SerializeField] List<Transform> vertices;
+    public List<Transform> vertices;
     List<Vector3> verticesPositions;
     List<Vector3[]> triangles;
     [SerializeField] List<float> areas;
 
-    public bool drawGizmos = false;
+    public bool sampleOnGizmos = false;
+
+    void Start()
+    {
+        verticesPositions = new List<Vector3>(); // ensures verticesPositions is empty
+        foreach (Transform v in vertices) { verticesPositions.Add(v.position); }
+        triangles = SplitPolygon();
+        areas = new List<float>(); // ensures areas is empty      
+        foreach (Vector3[] t in triangles) { areas.Add(GetTriangleArea(t)); }
+    }
 
     public Vector3 RandomPoint()
     {
@@ -34,7 +43,7 @@ public class SampleArea : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        if (drawGizmos)
+        if (sampleOnGizmos)
         {
             verticesPositions = new List<Vector3>(); // ensures verticesPositions is empty
             foreach (Transform v in vertices) { verticesPositions.Add(v.position); }

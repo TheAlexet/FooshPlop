@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
-    [SerializeField] private SampleArea fishingArea;
-    [SerializeField] private List<GameObject> spawnableFishes;
-    [SerializeField] private List<float> fishesSpawnRate;
+    [Header("Manager modules")]
+    [SerializeField] FishSpawner fishSpawner; // Handles spawning fishes
 
+    [Header("Scene information")]
+    [SerializeField] PolygonArea fishArea; // Area where fishes spawn and move
+    [SerializeField] List<GameObject> spawnableFishes; // List of spawnable fishes in the scene
 
-
-    private bool fishExists = false;
-    private GameObject curFish;
-
-    private float timeSinceThrow = 0f;
-
+    [Header("State information")]
     public Animator fishingAnimator;
     public string zeroState = "Zero";
     public string idleState = "Idle";
     public string throwState = "Throw";
 
+    List<float> fishesSpawnRate;
+    private bool fishExists = false;
+    private GameObject curFish;
+    private float timeSinceThrow = 0f;
     private float spawnDelay;
+
 
     void Start()
     {
+        fishesSpawnRate = new List<float>();
         foreach (GameObject fish in spawnableFishes)
         {
-            fishesSpawnRate.Add(fish.GetComponent<FishData>().spawnRate);
+            float rate = fish.GetComponent<FishData>().spawnRate;
+            fishesSpawnRate.Add(rate);
         }
     }
 
@@ -41,27 +45,23 @@ public class FishManager : MonoBehaviour
         // If throwing
         else if (fishingAnimator.GetCurrentAnimatorStateInfo(0).IsName(throwState))
         {
+            timeSinceThrow = 0f;
             spawnDelay = Random.Range(2f, 10f);
         }
         // If waiting for fish
         else if (fishingAnimator.GetCurrentAnimatorStateInfo(0).IsName(idleState))
         {
             timeSinceThrow += Time.deltaTime;
-            if (timeSinceThrow > spawnDelay && !fishExists) { SpawnFish(ChooseFish()); }
+            if (timeSinceThrow > spawnDelay && !fishExists)
+            {
+                curFish = fishSpawner.SpawnFish(ChooseFish(), fishArea);
+                fishExists = true;
+            }
         }
     }
 
-    int ChooseFish()
+    GameObject ChooseFish()
     {
-        // Choose a fish given their spawnRate
-        return new Categorical().Choice(fishesSpawnRate);
+        return spawnableFishes[new Categorical().Choice(fishesSpawnRate)];
     }
-
-    void SpawnFish(int fish)
-    {
-        curFish = GameObject.Instantiate(spawnableFishes[fish]);
-        curFish.transform.position = fishingArea.RandomPoint();
-        fishExists = true;
-    }
-
 }
