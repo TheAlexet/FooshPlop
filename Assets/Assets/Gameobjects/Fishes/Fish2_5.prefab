@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: Koi Yellow and White
   rarity: 3
+  spawnRate: 25
 --- !u!114 &728735430991484995
 MonoBehaviour:
   m_ObjectHideFlags: 0

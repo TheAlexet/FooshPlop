@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> spawnableFishes;
-    public List<float> fishesSpawnRate;
+    [SerializeField] private SampleArea fishingArea;
+    [SerializeField] private List<GameObject> spawnableFishes;
+    [SerializeField] private List<float> fishesSpawnRate;
 
 
 
@@ -21,6 +21,14 @@ public class FishManager : MonoBehaviour
     public string throwState = "Throw";
 
     private float spawnDelay;
+
+    void Start()
+    {
+        foreach (GameObject fish in spawnableFishes)
+        {
+            fishesSpawnRate.Add(fish.GetComponent<FishData>().spawnRate);
+        }
+    }
 
     void Update()
     {
@@ -52,9 +60,7 @@ public class FishManager : MonoBehaviour
     void SpawnFish(int fish)
     {
         curFish = GameObject.Instantiate(spawnableFishes[fish]);
-        curFish.transform.position = new Vector3(
-            Random.Range(-3f, 3f), 0.15f, Random.Range(-1.5f, -6.5f)
-        );
+        curFish.transform.position = fishingArea.RandomPoint();
         fishExists = true;
     }
 

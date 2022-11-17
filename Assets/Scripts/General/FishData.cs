@@ -7,4 +7,5 @@ public class FishData : MonoBehaviour
     [Header("Fish Entry")]
     public string fishName;
     public int rarity;
+    public float spawnRate; // maybe switch to static ?
 }
