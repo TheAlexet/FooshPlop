@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: Koi Orange and White
   rarity: 1
+  spawnRate: 100
 --- !u!114 &-1092458917688940848
 MonoBehaviour:
   m_ObjectHideFlags: 0
