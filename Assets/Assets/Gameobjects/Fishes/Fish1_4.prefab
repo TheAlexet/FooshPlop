@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 907040899015758707}
   - component: {fileID: 8416800460055877632}
   - component: {fileID: -7550312240651856340}
+  - component: {fileID: 6913283699935473513}
   m_Layer: 0
   m_Name: Fish1_4
   m_TagString: Untagged
@@ -69,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: Normal Brown, Blue and Green
   rarity: 1
+  spawnRate: 0
 --- !u!114 &-7550312240651856340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +85,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishAnimator: {fileID: 0}
   fishData: {fileID: 0}
+--- !u!114 &6913283699935473513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614241187774443652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ddda46009039211af8ce35b867f6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishArea: {fileID: 0}
+  moveSpeed: 0.3
+  rotationSpeed: 100
+  epsilon: 0.1
+  changeDestination: 1
+  minDelayBeforeChangeDestination: 1
+  maxDelayBeforeChangeDestination: 5
+  destination: {x: 0, y: 0, z: 0}
 --- !u!1001 &5477120915430431281
 PrefabInstance:
   m_ObjectHideFlags: 0

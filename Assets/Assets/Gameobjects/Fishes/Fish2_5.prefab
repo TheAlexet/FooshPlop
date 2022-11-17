@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6091048061508669531}
   - component: {fileID: 489561516552579408}
   - component: {fileID: 728735430991484995}
+  - component: {fileID: 6939287591462615960}
   m_Layer: 0
   m_Name: Fish2_5
   m_TagString: Untagged
@@ -84,6 +85,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishAnimator: {fileID: 0}
   fishData: {fileID: 0}
+--- !u!114 &6939287591462615960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583443704811762604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ddda46009039211af8ce35b867f6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishArea: {fileID: 0}
+  moveSpeed: 0.3
+  rotationSpeed: 100
+  epsilon: 0.1
+  changeDestination: 1
+  minDelayBeforeChangeDestination: 1
+  maxDelayBeforeChangeDestination: 5
+  destination: {x: 0, y: 0, z: 0}
 --- !u!1001 &5229517677117351473
 PrefabInstance:
   m_ObjectHideFlags: 0

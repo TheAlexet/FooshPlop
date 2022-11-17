@@ -5,14 +5,14 @@ using UnityEditor;
 
 public class DrawPolygon : MonoBehaviour
 {
-    [SerializeField] List<Transform> vertices;
-
+    [SerializeField] PolygonArea polygonArea;
     public Color drawColor;
     public float thickness;
 
 
     void OnDrawGizmos()
     {
+        List<Transform> vertices = polygonArea.vertices;
         for (int i = 0; i <= vertices.Count; i++)
         {
             Vector3 v1 = vertices[i % vertices.Count].position;
