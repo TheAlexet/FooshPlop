@@ -1,89 +1,87 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ScrollLevels : MonoBehaviour
 {
-    float scrollPosition = 0;
-    float[] pos;
-    int maxLevel;
+    [SerializeField] GameObject contentHolder;
+    [SerializeField] ScrollRect scrollRect;
+    [SerializeField] TMPro.TextMeshProUGUI levelText;
+    public float looseStep = 0.1f;
+    public float reducedSize = 0.6f;
 
-    [SerializeField]
-    private Database db;
+    [Header("Debug Values")]
+    [SerializeField] int closestLevel = 0;
+    [SerializeField] float scrollValue = 0f;
+    [SerializeField] float[] positions;
+    [SerializeField] Vector3 normalScale;
 
-    [SerializeField]
-    private GameObject scrollbar;
 
-    [SerializeField]
-    private Text levelText;
-
-    [SerializeField]
-    private AudioSource buttonSound;
-
-    // Start is called before the first frame update
     void Start()
     {
-        maxLevel = db.getMaxLevel();
-        for(int i = 1; i < gameObject.GetComponentsInChildren<Transform>().Length; i++)
+        positions = new float[contentHolder.transform.childCount];
+        for (int i = 0; i < contentHolder.transform.childCount; i++)
         {
-            if(i > maxLevel)
-            {
-                gameObject.GetComponentsInChildren<Transform>()[i].GetComponent<Image>().color = new Color32(100,100,100,150);
-                gameObject.GetComponentsInChildren<Transform>()[i].name = "Level " + i.ToString() + ": Locked";
-            }
+            positions[i] = (float)i / (contentHolder.transform.childCount - 1);
         }
+
+        normalScale = contentHolder.transform.GetChild(0).GetChild(0).localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        pos = new float[transform.childCount];
-        float distance = 1f / (pos.Length - 1f);
-        for(int i = 0; i < pos.Length; i++)
+        if (!Input.GetMouseButton(0) && !(Input.touchCount > 0))
         {
-            pos [i] = distance * i;
+            closestLevel = GetClosestLevel();
+            UpdateTextLevel();
+            scrollValue = positions[closestLevel];
+            scrollRect.horizontalNormalizedPosition = Mathf.Lerp(
+                scrollRect.horizontalNormalizedPosition, scrollValue, looseStep
+            );
         }
-        if(Input.GetMouseButton (0))
-        {
-            scrollPosition = scrollbar.GetComponent<Scrollbar> ().value;
-        } else {
-            for(int i = 0; i < pos.Length; i++)
-            {
-                if(scrollPosition < pos [i] + (distance / 2) && scrollPosition > pos [i] - (distance / 2))
-                {
-                    scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp (scrollbar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
-                }
-            }
-        }
-
-        for(int i = 0; i < pos.Length; i++)
-        {
-            if(scrollPosition < pos[i] + (distance/2) && scrollPosition > pos[i] - (distance/2))
-            {
-                transform.GetChild(i).localScale = Vector2.Lerp (transform.GetChild(i).localScale, new Vector2(1f, 1f), 0.1f);
-                for(int j = 0; j < pos.Length; j++)
-                {
-                    if(j != i)
-                    {
-                        transform.GetChild(j).localScale = Vector2.Lerp (transform.GetChild(j).localScale, new Vector2(0.8f, 0.8f), 0.1f);
-                    }
-                    else 
-                    {
-                        levelText.text = gameObject.GetComponentsInChildren<Transform>()[i + 1].name;
-                    }
-                }
-            }
-        }
+        UpdateLevelSize();
     }
 
-    public void startLevel(int level)
+    int GetClosestLevel()
     {
-        if(level <= maxLevel)
+        float curPos = scrollRect.horizontalNormalizedPosition;
+        float halfDistance = 0.5f / (contentHolder.transform.childCount - 1);
+
+        for (int i = 0; i < contentHolder.transform.childCount; i++)
         {
-            SceneManager.LoadScene("Level " + level.ToString());
-            buttonSound.Play();
+            float childPos = positions[i];
+            if (curPos - halfDistance < childPos && childPos <= curPos + halfDistance)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    void UpdateLevelSize()
+    {
+        int closestLevel = GetClosestLevel();
+        for (int i = 0; i < contentHolder.transform.childCount; i++)
+        {
+            if (i == closestLevel)
+            {
+                Vector3 curScale = contentHolder.transform.GetChild(i).GetChild(0).localScale;
+                contentHolder.transform.GetChild(i).GetChild(0).localScale = Vector3.Lerp(
+                    curScale, normalScale, looseStep
+                );
+            }
+            else
+            {
+                Vector3 curScale = contentHolder.transform.GetChild(i).GetChild(0).localScale;
+                contentHolder.transform.GetChild(i).GetChild(0).localScale = Vector3.Lerp(
+                    curScale, reducedSize * normalScale, looseStep
+                );
+            }
         }
     }
+
+    void UpdateTextLevel()
+    {
+        levelText.text = "Level " + closestLevel.ToString();
+    }
+
 }

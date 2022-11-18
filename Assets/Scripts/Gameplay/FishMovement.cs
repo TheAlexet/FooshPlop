@@ -16,7 +16,9 @@ public class FishMovement : MonoBehaviour
     float delayBeforeChangeDestination;
     [SerializeField] Vector3 destination;
 
-    void Start()
+    public void SetFishArea(PolygonArea area) { fishArea = area; }
+
+    void OnEnable()
     {
         NextDestination();
         timeSinceLastChangeDestination = 0f;
