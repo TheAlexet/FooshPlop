@@ -3,6 +3,8 @@ using UnityEngine;
 public class MenuSwitch : MonoBehaviour
 {
     [SerializeField] GameObject menusHolder;
+
+    [SerializeField] GameObject levelText;
     [SerializeField] GameObject buttonsHolder;
     public float rescaleSelectedButton = 1.1f;
     public float transitionStep = 0.1f;
