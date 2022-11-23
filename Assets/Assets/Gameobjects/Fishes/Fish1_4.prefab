@@ -71,6 +71,7 @@ MonoBehaviour:
   fishName: Normal Brown, Blue and Green
   rarity: 1
   spawnRate: 0
+  fancyName: Fancy
 --- !u!114 &-7550312240651856340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,8 +101,8 @@ MonoBehaviour:
   fishArea: {fileID: 0}
   moveSpeed: 0.3
   rotationSpeed: 100
-  epsilon: 0.1
-  changeDestination: 1
+  thresholdDist: 0.1
+  thresholdAngle: 2
   minDelayBeforeChangeDestination: 1
   maxDelayBeforeChangeDestination: 5
   destination: {x: 0, y: 0, z: 0}
