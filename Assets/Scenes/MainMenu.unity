@@ -2878,7 +2878,7 @@ GameObject:
   - component: {fileID: 978892841}
   - component: {fileID: 978892844}
   - component: {fileID: 978892843}
-  - component: {fileID: 978892842}
+  - component: {fileID: 978892846}
   - component: {fileID: 978892845}
   m_Layer: 5
   m_Name: LevelSelector
@@ -2910,36 +2910,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -630}
   m_SizeDelta: {x: 1080, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &978892842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978892840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 117730321}
-  m_Horizontal: 1
-  m_Vertical: 0
-  m_MovementType: 1
-  m_Elasticity: 0.01
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 3
-  m_Viewport: {fileID: 1471933713}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &978892843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,14 +2961,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentHolder: {fileID: 117730320}
-  scrollRect: {fileID: 978892842}
-  levelText: {fileID: 1108797840}
-  looseStep: 0.1
+  scrollRect: {fileID: 978892846}
+  scrollText: {fileID: 1108797840}
+  autoFocus: 1
+  returnStep: 0.1
+  delayAfterUnpress: 0.4
   reducedSize: 0.6
-  closestLevel: 0
-  scrollValue: 0
-  positions: []
-  normalScale: {x: 0, y: 0, z: 0}
+  closestPosition: 0
+--- !u!114 &978892846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978892840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2868fd2a1255baf5986f1b1f393b5027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 117730321}
+  m_ScrollFactor: 3
+  m_Horizontal: 1
+  m_Vertical: 0
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 10
+  m_Viewport: {fileID: 1471933713}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 1
+  m_VerticalScrollbarVisibility: 1
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1012144971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,15 +3778,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentHolder: {fileID: 2117074403}
   scrollRect: {fileID: 1341330036}
-  levelText: {fileID: 1108797840}
-  looseStep: 0.1
+  scrollText: {fileID: 1108797840}
+  autoFocus: 1
+  returnStep: 0.1
+  delayAfterUnpress: 1
   reducedSize: 0.6
-  indexOffset: 3
-  widthOffset: 1200
-  closestFish: 0
-  scrollValue: 0
-  positions: []
-  normalScale: {x: 0, y: 0, z: 0}
+  closestPosition: 0
 --- !u!114 &1341330035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3830,7 +3827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 2117074404}
-  m_ScrollFactor: 1
+  m_ScrollFactor: 3
   m_Horizontal: 1
   m_Vertical: 0
   m_MovementType: 1
