@@ -8,4 +8,5 @@ public class FishData : MonoBehaviour
     public string fishName;
     public int rarity;
     public float spawnRate;
+    public string fancyName;
 }
