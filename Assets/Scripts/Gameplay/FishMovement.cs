@@ -15,6 +15,7 @@ public class FishMovement : MonoBehaviour
     float timeSinceLastChangeDestination;
     float delayBeforeChangeDestination;
     [SerializeField] Vector3 destination;
+    bool hookSeen = false;
 
     public void SetFishArea(PolygonArea area) { fishArea = area; }
 
@@ -27,15 +28,25 @@ public class FishMovement : MonoBehaviour
 
     void Update()
     {
-        GoTowardDestination();
-        timeSinceLastChangeDestination += Time.deltaTime;
-        if (timeSinceLastChangeDestination > delayBeforeChangeDestination)
+        if (hookSeen) //If the fish has seen the hook
         {
-            NextDestination();
-            timeSinceLastChangeDestination = 0f;
-            delayBeforeChangeDestination = Random.Range(minDelayBeforeChangeDestination, maxDelayBeforeChangeDestination);
+            GoTowardDestination();
+            if(GameObject.Find("FishingHook") == null)
+            {
+                hookSeen = false;
+            }
         }
-
+        else //If the fish has not seen the hook
+        {
+            GoTowardDestination();
+            timeSinceLastChangeDestination += Time.deltaTime;
+            if (timeSinceLastChangeDestination > delayBeforeChangeDestination)
+            {
+                NextDestination();
+                timeSinceLastChangeDestination = 0f;
+                delayBeforeChangeDestination = Random.Range(minDelayBeforeChangeDestination, maxDelayBeforeChangeDestination);
+            }
+        }
     }
 
     void NextDestination()
@@ -57,8 +68,30 @@ public class FishMovement : MonoBehaviour
         if (direction.magnitude > thresholdDist)
         {
             transform.Translate(displacement, Space.World);
-
         }
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "HookVisionField")
+        {
+           print("hook seen");
+           hookSeen = true;
+           destination = new Vector3(0f, 0f, 0f);
+        }
+        if (col.gameObject.tag == "Hook")
+        {
+           print("hook bit");
+           GameObject.Find("RodManager").GetComponent<RodController>().fishBitHook = true;
+           GameObject.Find("RodManager").GetComponent<RodController>().fishBitten = gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "HookVisionField")
+        {
+            hookSeen = false;
+        }
+    }
 }
