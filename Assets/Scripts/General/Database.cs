@@ -23,4 +23,5 @@ public class Database : MonoBehaviour
     {
         PlayerPrefs.SetInt("maxLevel", maxLevel);
     }
+
 }
