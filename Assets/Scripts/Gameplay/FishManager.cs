@@ -38,18 +38,18 @@ public class FishManager : MonoBehaviour
     void Update()
     {
         // If doing nothing
-        if (IsStateName("Zero"))
+        if (IsStateName(zeroState))
         {
 
         }
         // If throwing
-        else if (IsStateName("Throw"))
+        else if (IsStateName(throwState))
         {
             timeSinceThrow = 0f;
             spawnDelay = Random.Range(2f, 10f);
         }
         // If waiting for fish
-        else if (IsStateName("Idle"))
+        else if (IsStateName(idleState))
         {
             timeSinceThrow += Time.deltaTime;
             if (timeSinceThrow > spawnDelay && fishCount < fishCountMax)
