@@ -16,6 +16,8 @@ public class RodController : MonoBehaviour
 
     [SerializeField]
     private FishManager fishManager;
+    public Vector3 position;
+    public Vector3 hookOffset;
 
     public bool fishBitHook = false;
     public GameObject fishBitten;
@@ -30,7 +32,7 @@ public class RodController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       checkRodState(); 
+        checkRodState();
     }
 
     void checkRodState()
@@ -59,18 +61,18 @@ public class RodController : MonoBehaviour
         {
             StartCoroutine(changeState("Cast"));
             fishingHook.SetActive(true);
-            fishingHook.transform.position = new Vector3(0f, 0.07f, 0f);
+            fishingHook.transform.position = position;
         }
     }
 
     void doStateFishing()
     {
-        if(fishBitHook)
+        if (fishBitHook)
         {
             fishBitHook = false;
-            timeToCatch = timeToCatch/fishBitten.GetComponent<FishData>().rarity;
-            print(timeToCatch/fishBitten.GetComponent<FishData>().rarity);
-            fishingHook.transform.position = new Vector3(0f, -0.07f, 0f);
+            timeToCatch = timeToCatch / fishBitten.GetComponent<FishData>().rarity;
+            print(timeToCatch / fishBitten.GetComponent<FishData>().rarity);
+            fishingHook.transform.position = position + hookOffset;
             StartCoroutine(changeState("FishCaught"));
         }
         else if (Input.gyro.rotationRateUnbiased.x > 3)
@@ -83,19 +85,19 @@ public class RodController : MonoBehaviour
     void doStateHook()
     {
         remainingTimeToCatch += Time.deltaTime;
-        if(remainingTimeToCatch > timeToCatch) //Fish not caught in time
+        if (remainingTimeToCatch > timeToCatch) //Fish not caught in time
         {
             timeToCatch = 2f;
             remainingTimeToCatch = 0;
             fishManager.fishCount -= 1;
-            if(fishBitten != null)
+            if (fishBitten != null)
             {
                 Destroy(fishBitten);
             }
             fishingHook.SetActive(false);
             StartCoroutine(changeState("Catch"));
         }
-        else if(Input.gyro.rotationRateUnbiased.x > 3) //Fish caught in time
+        else if (Input.gyro.rotationRateUnbiased.x > 3) //Fish caught in time
         {
             int acornsWon = fishBitten.GetComponent<FishData>().rarity * 10;
             db.setAcorns(db.getAcorns() + acornsWon);
@@ -103,7 +105,7 @@ public class RodController : MonoBehaviour
             timeToCatch = 2f;
             remainingTimeToCatch = 0;
             fishManager.fishCount -= 1;
-            if(fishBitten != null)
+            if (fishBitten != null)
             {
                 Destroy(fishBitten);
             }
@@ -116,7 +118,7 @@ public class RodController : MonoBehaviour
     {
         fishingHook.SetActive(false);
     }
-        
+
     bool IsStateName(string name)
     {
         return fishingAnimator.GetCurrentAnimatorStateInfo(0).IsName(name);

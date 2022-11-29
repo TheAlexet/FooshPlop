@@ -31,7 +31,7 @@ public class FishMovement : MonoBehaviour
         if (hookSeen) //If the fish has seen the hook
         {
             GoTowardDestination();
-            if(GameObject.Find("FishingHook") == null)
+            if (GameObject.Find("FishingHook") == null)
             {
                 hookSeen = false;
             }
@@ -75,15 +75,16 @@ public class FishMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "HookVisionField")
         {
-           print("hook seen");
-           hookSeen = true;
-           destination = new Vector3(0f, 0f, 0f);
+            print("hook seen");
+            hookSeen = true;
+            //    destination = new Vector3(0f, 0f, 0f);
+            destination = col.transform.position;
         }
         if (col.gameObject.tag == "Hook")
         {
-           print("hook bit");
-           GameObject.Find("RodManager").GetComponent<RodController>().fishBitHook = true;
-           GameObject.Find("RodManager").GetComponent<RodController>().fishBitten = gameObject;
+            print("hook bit");
+            GameObject.Find("RodManager").GetComponent<RodController>().fishBitHook = true;
+            GameObject.Find("RodManager").GetComponent<RodController>().fishBitten = gameObject;
         }
     }
 
