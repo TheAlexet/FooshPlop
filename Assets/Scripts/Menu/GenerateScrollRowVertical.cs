@@ -29,11 +29,17 @@ public class GenerateScrollRowVertical : MonoBehaviour
             GameObject fishButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
             GameObject fish = fishesGameObjects[i];
             fishButton.name = fish.name;
-
+            if(fishButton.GetComponent<Button>() != null)
+            {
+                print("Button found");    
+                fishButton.GetComponent<Button>().onClick.AddListener(ShowFishData); 
+            }
             GameObject fishOject = GameObject.Instantiate(fish, fishButton.transform.GetChild(0));
             fishOject.transform.localScale /= (itemsPerRow - 1);
             Destroy(fishOject.GetComponent<FishMovement>());
             Destroy(fishOject.GetComponent<FishOnSpawn>());
+
+            
         }
 
         int emptyItems = itemsPerRow - fishesGameObjects.Count % itemsPerRow;
@@ -42,5 +48,11 @@ public class GenerateScrollRowVertical : MonoBehaviour
             GameObject fishButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
 
         }
+    }
+
+    public void ShowFishData()
+    {
+        print("Fish Data:");
+        print(gameObject.GetComponent<FishData>().fancyName);
     }
 }
