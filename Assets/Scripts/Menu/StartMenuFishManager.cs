@@ -17,7 +17,7 @@ public class StartMenuFishManager : MonoBehaviour
         {
             List<float> ones = new List<float>();
             foreach (GameObject f in fishes) { ones.Add(1.0f); }
-            int fishInd = new Categorical().Choice(ones);
+            int fishInd = Categorical.Choice(ones);
 
             fishSpawner.SpawnFish(fishes[fishInd], fishArea);
             fishExists = true;

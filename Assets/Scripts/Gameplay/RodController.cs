@@ -113,7 +113,7 @@ public class RodController : MonoBehaviour
         {
             timeToCatch = 2f;
             remainingTimeToCatch = 0;
-            fishManager.fishCount -= 1;
+            // fishManager.fishCount -= 1;
             if (fishBitten != null)
             {
                 Destroy(fishBitten);
@@ -132,7 +132,7 @@ public class RodController : MonoBehaviour
             print("Total acorns: " + db.getAcorns().ToString());
             timeToCatch = 2f;
             remainingTimeToCatch = 0;
-            fishManager.fishCount -= 1;
+            // fishManager.fishCount -= 1;
             if (fishBitten != null)
             {
                 Destroy(fishBitten);

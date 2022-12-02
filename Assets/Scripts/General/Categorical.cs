@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Categorical : MonoBehaviour
 {
-    public int Choice(List<float> probs)
+    public static int Choice(List<float> probs)
     {
+        List<float> RescaleProbs(List<float> probs)
+        {
+            // Ensures that probs sums to 1
+            float sumProbs = 0f;
+            foreach (float p in probs) { sumProbs += p; }
+            for (int i = 0; i < probs.Count; i++) { probs[i] /= sumProbs; }
+            return probs;
+        }
+
         // Randomly returns one indice of probs
         probs = RescaleProbs(probs);
 
@@ -20,13 +29,5 @@ public class Categorical : MonoBehaviour
         return probs.Count - 1;
     }
 
-    private List<float> RescaleProbs(List<float> probs)
-    {
-        // Ensures that probs sums to 1
 
-        float sumProbs = 0f;
-        foreach (float p in probs) { sumProbs += p; }
-        for (int i = 0; i < probs.Count; i++) { probs[i] /= sumProbs; }
-        return probs;
-    }
 }
