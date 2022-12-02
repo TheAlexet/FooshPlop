@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class RodController : MonoBehaviour
 {
@@ -31,11 +32,15 @@ public class RodController : MonoBehaviour
     public string castState = "Cast";
     public string notCaughtState = "NoCaught";
 
+    public GameObject splashFX;
+
     // Start is called before the first frame update
     void Start()
     {
         Input.gyro.enabled = true;
         hookPosition = fishingHook.transform.position;
+        splashFX.SetActive(false);
+        fishingHook.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,15 +54,17 @@ public class RodController : MonoBehaviour
         if (IsStateName(zeroState))
         {
             doStateNotFishing();
+
         }
         else if (IsStateName(idleState))
         {
+
             if (!fishingHook.activeSelf)
             {
                 fishingHook.SetActive(true);
                 fishingHook.transform.position = hookPosition;
-            }
 
+            }
             doStateFishing();
         }
         else if (IsStateName(hookState))
@@ -67,6 +74,7 @@ public class RodController : MonoBehaviour
         else if (IsStateName(catchState))
         {
             doStateCatch();
+
         }
     }
 
@@ -88,6 +96,7 @@ public class RodController : MonoBehaviour
             timeToCatch = timeToCatch / fishBitten.GetComponent<FishData>().rarity;
             print(timeToCatch / fishBitten.GetComponent<FishData>().rarity);
             fishingHook.transform.position = hookPosition + hookOffset;
+            splashFX.SetActive(true);
             StartCoroutine(changeState(hookState));
         }
         else if (Input.gyro.rotationRateUnbiased.x > 3)
@@ -109,11 +118,12 @@ public class RodController : MonoBehaviour
             {
                 Destroy(fishBitten);
             }
+
             // fishingHook.SetActive(false);
             // StartCoroutine(changeState(catchState));
             fishingHook.transform.position -= hookOffset;
             StartCoroutine(changeState(notCaughtState));
-
+            splashFX.SetActive(false);
         }
         else if (Input.gyro.rotationRateUnbiased.x > 3) //Fish caught in time
         {
@@ -129,6 +139,7 @@ public class RodController : MonoBehaviour
             }
             fishingHook.SetActive(false);
             StartCoroutine(changeState(catchState));
+            splashFX.SetActive(false);
         }
     }
 
