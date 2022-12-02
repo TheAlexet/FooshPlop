@@ -9,7 +9,9 @@ public class NewPinchAndZoom : MonoBehaviour
     public float zoomOutMax = 8;
     public float maxHorizontalPos = 3f;
     public float minHorizontalPos = -3f;
-    public bool blockVerticalMovement = true;
+    public float maxVerticalPos = 12f;
+    public float minVerticalPos = 8f;
+    public float cameraSpeed = 0.2f;
 
     // Update is called once per frame
     void Update()
@@ -36,15 +38,18 @@ public class NewPinchAndZoom : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (blockVerticalMovement)
-            {
-                direction = new Vector3(direction.x, 0f, direction.z);
-            }
-            Camera.main.transform.position += direction;
-            Camera.main.transform.position = new Vector3(Mathf.Clamp(
-                Camera.main.transform.position.x, minHorizontalPos, maxHorizontalPos
-            ),
-                Camera.main.transform.position.y,
+            direction = new Vector3(direction.x, direction.y, 0f);
+            // Camera.main.transform.position += direction;
+            Vector3 newCameraPosition = Camera.main.transform.position + direction;
+            // Camera.main.transform.position = newCameraPosition;
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPosition, cameraSpeed);
+            Camera.main.transform.position = new Vector3(
+                Mathf.Clamp(
+                    Camera.main.transform.position.x, minHorizontalPos, maxHorizontalPos
+                ),
+                Mathf.Clamp(
+                    Camera.main.transform.position.y, minVerticalPos, maxVerticalPos
+                ),
                 Camera.main.transform.position.z
             );
         }

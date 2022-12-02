@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class RodController : MonoBehaviour
 {
@@ -16,17 +17,30 @@ public class RodController : MonoBehaviour
 
     [SerializeField]
     private FishManager fishManager;
-    public Vector3 position;
+    Vector3 hookPosition;
     public Vector3 hookOffset;
 
     public bool fishBitHook = false;
     public GameObject fishBitten;
     float timeToCatch = 2f;
     float remainingTimeToCatch = 0f;
+
+    public string zeroState = "Zero";
+    public string idleState = "Idle";
+    public string hookState = "Hook";
+    public string catchState = "Catch";
+    public string castState = "Cast";
+    public string notCaughtState = "NoCaught";
+
+    public GameObject splashFX;
+
     // Start is called before the first frame update
     void Start()
     {
         Input.gyro.enabled = true;
+        hookPosition = fishingHook.transform.position;
+        splashFX.SetActive(false);
+        fishingHook.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,21 +51,30 @@ public class RodController : MonoBehaviour
 
     void checkRodState()
     {
-        if (IsStateName("Zero"))
+        if (IsStateName(zeroState))
         {
             doStateNotFishing();
+
         }
-        else if (IsStateName("Idle"))
+        else if (IsStateName(idleState))
         {
+
+            if (!fishingHook.activeSelf)
+            {
+                fishingHook.SetActive(true);
+                fishingHook.transform.position = hookPosition;
+
+            }
             doStateFishing();
         }
-        else if (IsStateName("Hook"))
+        else if (IsStateName(hookState))
         {
             doStateHook();
         }
-        else if (IsStateName("Catch"))
+        else if (IsStateName(catchState))
         {
             doStateCatch();
+
         }
     }
 
@@ -59,9 +82,9 @@ public class RodController : MonoBehaviour
     {
         if (Input.gyro.rotationRateUnbiased.x < -3)
         {
-            StartCoroutine(changeState("Cast"));
-            fishingHook.SetActive(true);
-            fishingHook.transform.position = position;
+            StartCoroutine(changeState(castState));
+            // fishingHook.SetActive(true);
+            // fishingHook.transform.position = hookPosition;
         }
     }
 
@@ -72,13 +95,14 @@ public class RodController : MonoBehaviour
             fishBitHook = false;
             timeToCatch = timeToCatch / fishBitten.GetComponent<FishData>().rarity;
             print(timeToCatch / fishBitten.GetComponent<FishData>().rarity);
-            fishingHook.transform.position = position + hookOffset;
-            StartCoroutine(changeState("FishCaught"));
+            fishingHook.transform.position = hookPosition + hookOffset;
+            splashFX.SetActive(true);
+            StartCoroutine(changeState(hookState));
         }
         else if (Input.gyro.rotationRateUnbiased.x > 3)
         {
             fishingHook.SetActive(false);
-            StartCoroutine(changeState("Catch"));
+            StartCoroutine(changeState(catchState));
         }
     }
 
@@ -94,8 +118,12 @@ public class RodController : MonoBehaviour
             {
                 Destroy(fishBitten);
             }
-            fishingHook.SetActive(false);
-            StartCoroutine(changeState("Catch"));
+
+            // fishingHook.SetActive(false);
+            // StartCoroutine(changeState(catchState));
+            fishingHook.transform.position -= hookOffset;
+            StartCoroutine(changeState(notCaughtState));
+            splashFX.SetActive(false);
         }
         else if (Input.gyro.rotationRateUnbiased.x > 3) //Fish caught in time
         {
@@ -110,7 +138,8 @@ public class RodController : MonoBehaviour
                 Destroy(fishBitten);
             }
             fishingHook.SetActive(false);
-            StartCoroutine(changeState("Catch"));
+            StartCoroutine(changeState(catchState));
+            splashFX.SetActive(false);
         }
     }
 

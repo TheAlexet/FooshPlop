@@ -10,6 +10,7 @@ public class DrawPolygon : MonoBehaviour
     public float thickness;
 
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         List<Transform> vertices = polygonArea.vertices;
@@ -20,4 +21,5 @@ public class DrawPolygon : MonoBehaviour
             Handles.DrawBezier(v1, v2, v1, v2, drawColor, null, thickness);
         }
     }
+#endif
 }
