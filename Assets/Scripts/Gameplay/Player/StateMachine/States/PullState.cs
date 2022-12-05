@@ -9,7 +9,9 @@ public class PullState : NonInteractiveState
     public override void Enter()
     {
         base.Enter();
-        _sm.fishManager.fishingHook.forceNotSplash = true;
+        _sm.fishManager.FishingHook.forceNotSplash = false;
+        _sm.fishManager.FishingHook.SetSplashFX(false);
+        _sm.fishManager.FishingHook.gameObject.SetActive(false);
     }
 
     public override void UpdateLogic()
@@ -22,13 +24,5 @@ public class PullState : NonInteractiveState
             _sm.playerAnimator.ResetTrigger("Pull");
             _sm.ChangeState(_sm.zeroState);
         }
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        _sm.fishManager.fishingHook.forceNotSplash = false;
-        _sm.fishManager.fishingHook.SetSplashFX(false);
-        _sm.fishManager.fishingHook.gameObject.SetActive(false);
     }
 }

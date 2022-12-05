@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
+    [Header("Fish Manager Values")]
+    [SerializeField][Range(0.5f, 2f)] private float fishScale;
+    [SerializeField][MinMaxSlider(0f, 5f)] private Vector2 spawnDelay;
     [SerializeField] private PolygonArea fishArea;
     [SerializeField] private List<GameObject> spawnableFishes;
-    public float fishScale;
-    [MinMaxSlider(0f, 10f)] public Vector2 spawnDelay;
+    [field: SerializeField] public FishingHook FishingHook { get; private set; }
+
 
     private List<float> fishesSpawnRate;
-    [SerializeField] private bool canSpawn;
-    [SerializeField] private bool canDestroy;
-    [SerializeField] private float _timeCanSpawn;
-    private float _delayBeforeSpawn;
+
+    private float delayBeforeCanSpawn;
+    private float timeSinceCanSpawn;
+
     private GameObject currentFish;
 
-    public bool isBiting;
-    public bool isLeaving;
-    public FishingHook fishingHook;
+    private bool canSpawn;
+    private bool canDestroy;
+
+    public bool isBiting { get; private set; }
+    public bool isLeaving { get; private set; }
 
     void Start()
     {
         fishesSpawnRate = new List<float>();
         foreach (GameObject fish in spawnableFishes)
         {
-            float rate = fish.GetComponent<FishData>().spawnRate;
+            float rate = fish.GetComponent<FishSM>().Data.SpawnRate;
             fishesSpawnRate.Add(rate);
         }
     }
@@ -34,8 +39,8 @@ public class FishManager : MonoBehaviour
     {
         if (canSpawn && currentFish == null)
         {
-            _timeCanSpawn += Time.deltaTime;
-            if (_timeCanSpawn > _delayBeforeSpawn)
+            timeSinceCanSpawn += Time.deltaTime;
+            if (timeSinceCanSpawn > delayBeforeCanSpawn)
             {
                 currentFish = SpawnFish(ChooseFish(), fishArea);
                 canSpawn = false;
@@ -54,7 +59,7 @@ public class FishManager : MonoBehaviour
         }
 
         if (isBiting)
-            fishingHook.SetSplashFX(true);
+            FishingHook.SetSplashFX(true);
     }
 
     public void SetCanSpawn(bool value)
@@ -62,8 +67,8 @@ public class FishManager : MonoBehaviour
         canSpawn = value;
         if (canSpawn)
         {
-            _timeCanSpawn = 0f;
-            _delayBeforeSpawn = Random.Range(spawnDelay.x, spawnDelay.y);
+            timeSinceCanSpawn = 0f;
+            delayBeforeCanSpawn = Random.Range(spawnDelay.x, spawnDelay.y);
         }
     }
 

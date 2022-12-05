@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnState : BaseState
+public class SpawnState : FishState
 {
-    protected FishSM _sm;
-
-    public SpawnState(FishSM stateMachine) : base("Spawn", stateMachine)
-    {
-        _sm = (FishSM)stateMachine;
-    }
+    public SpawnState(FishSM stateMachine) : base("Spawn", stateMachine) { }
 
     public override void Enter()
     {

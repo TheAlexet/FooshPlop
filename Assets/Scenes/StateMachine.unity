@@ -286,15 +286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4570af06814c26f4ea9a7e8fe118947d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishScale: 1
+  spawnDelay: {x: 0.4, y: 0.89}
   fishArea: {fileID: 1771086285}
   spawnableFishes:
   - {fileID: 435967659476087684, guid: bc3f7e881cf7293debd7f5da390ad699, type: 3}
-  fishScale: 1
-  spawnDelay: {x: 0.4, y: 0.89}
-  canSpawn: 0
-  canDestroy: 0
-  isBiting: 0
-  fishingHook: {fileID: 395071935}
+  <FishingHook>k__BackingField: {fileID: 395071935}
 --- !u!1 &267521725
 GameObject:
   m_ObjectHideFlags: 0

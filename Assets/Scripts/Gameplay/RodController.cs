@@ -93,8 +93,8 @@ public class RodController : MonoBehaviour
         if (fishBitHook)
         {
             fishBitHook = false;
-            timeToCatch = timeToCatch / fishBitten.GetComponent<FishData>().rarity;
-            print(timeToCatch / fishBitten.GetComponent<FishData>().rarity);
+            timeToCatch = timeToCatch / fishBitten.GetComponent<FishData>().Rarity;
+            print(timeToCatch / fishBitten.GetComponent<FishData>().Rarity);
             fishingHook.transform.position = hookPosition + hookOffset;
             splashFX.SetActive(true);
             StartCoroutine(changeState(hookState));
@@ -127,7 +127,7 @@ public class RodController : MonoBehaviour
         }
         else if (Input.gyro.rotationRateUnbiased.x > 3) //Fish caught in time
         {
-            int acornsWon = fishBitten.GetComponent<FishData>().rarity * 10;
+            int acornsWon = fishBitten.GetComponent<FishData>().Rarity * 10;
             db.setAcorns(db.getAcorns() + acornsWon);
             print("Total acorns: " + db.getAcorns().ToString());
             timeToCatch = 2f;

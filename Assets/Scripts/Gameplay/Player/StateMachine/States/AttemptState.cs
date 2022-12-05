@@ -10,7 +10,7 @@ public class AttemptState : InteractiveState
     {
         base.Exit();
         _sm.fishManager.DestroyCurrentFish();
-        _sm.fishManager.fishingHook.SetSplashFX(false);
+        _sm.fishManager.FishingHook.SetSplashFX(false);
     }
 
     public override void UpdateLogic()
