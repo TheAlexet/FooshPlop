@@ -12,9 +12,17 @@ public class GenerateScrollRowVertical : MonoBehaviour
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Transform parent;
     GameObject last_row;
+    [SerializeField] private Button MyButton = null; // assign in the editor
+    List<GameObject> fishesInstantiated;
+    [SerializeField] GameObject fishDataMenu;
+    [SerializeField] TMPro.TextMeshProUGUI fishName;
+    [SerializeField] TMPro.TextMeshProUGUI fishRarity;
+    [SerializeField] TMPro.TextMeshProUGUI fishCaught;
+    [SerializeField] Database db;
 
     void Start()
     {
+        fishDataMenu.SetActive(false);
         for (int i = 0; i < fishesGameObjects.Count; i++)
         {
             if (i % itemsPerRow == 0)
@@ -24,16 +32,17 @@ public class GenerateScrollRowVertical : MonoBehaviour
                     last_row.GetComponent<RectTransform>().sizeDelta.x,
                     last_row.GetComponent<RectTransform>().sizeDelta.y / (float)(itemsPerRow - 1)
                 );
-                last_row.GetComponent<HorizontalLayoutGroup>().spacing = last_row.GetComponent<RectTransform>().sizeDelta.x / itemsPerRow;
+                last_row.GetComponent<HorizontalLayoutGroup>().spacing = last_row.GetComponent<RectTransform>().sizeDelta.x / itemsPerRow / 10f;
             }
             GameObject fishButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
-            GameObject fish = fishesGameObjects[i];
-            fishButton.name = fish.name;
-
+            fishButton.GetComponent<RectTransform>().sizeDelta = new Vector2(300,150);
+            GameObject fish = fishesGameObjects[i]; 
             GameObject fishOject = GameObject.Instantiate(fish, fishButton.transform.GetChild(0));
             fishOject.transform.localScale /= (itemsPerRow - 1);
             Destroy(fishOject.GetComponent<FishMovement>());
             Destroy(fishOject.GetComponent<FishOnSpawn>());
+
+            
         }
 
         int emptyItems = itemsPerRow - fishesGameObjects.Count % itemsPerRow;
@@ -42,5 +51,28 @@ public class GenerateScrollRowVertical : MonoBehaviour
             GameObject fishButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
 
         }
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            for (int j = 0; j < child.childCount; j++)
+            {
+                Transform grandChild = child.GetChild(j);
+                grandChild.GetComponent<Button>().onClick.AddListener(delegate{ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<FishData>());}); 
+                print(grandChild.GetChild(0).GetChild(0).GetComponent<FishData>().fancyName);
+            }
+        }
+    }
+
+    public void ShowFishData(FishData fishData)
+    {
+        fishDataMenu.SetActive(true);
+        fishName.text = fishData.fancyName;
+        fishRarity.text = fishData.rarity.ToString();
+        fishCaught.text = db.getFishCaught(fishData.fancyName).ToString();
+    }
+
+    public void CloseFishDataMenu()
+    {
+        fishDataMenu.SetActive(false);
     }
 }

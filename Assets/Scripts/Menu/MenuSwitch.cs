@@ -8,7 +8,7 @@ public class MenuSwitch : MonoBehaviour
     [SerializeField] GameObject buttonsHolder;
     public float rescaleSelectedButton = 1.1f;
     public float transitionStep = 0.1f;
-
+    [SerializeField] private AudioSource buttonSound;
 
     [Header("Debug Values")]
     [SerializeField] RectTransform defaultButtonRect;
@@ -33,6 +33,7 @@ public class MenuSwitch : MonoBehaviour
         menusHolder.transform.GetChild(newMenu).gameObject.SetActive(true);
         prevMenu = currentMenu;
         currentMenu = newMenu;
+        buttonSound.Play();
     }
 
     public void UpdateScale()
