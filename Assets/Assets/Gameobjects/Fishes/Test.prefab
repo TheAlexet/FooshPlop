@@ -76,7 +76,7 @@ MonoBehaviour:
     <ChangeDestinationDelay>k__BackingField: {x: 1, y: 3}
     <CatchBeforeDelay>k__BackingField: {x: 2, y: 5}
     <TranslateSpeed>k__BackingField: 1
-    <RotateSpeed>k__BackingField: 100
+    <RotateSpeed>k__BackingField: 150
   fishArea: {fileID: 0}
   <fishHead>k__BackingField: {fileID: 3636281233903812597}
   isBiting: 0
