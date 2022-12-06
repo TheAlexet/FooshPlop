@@ -18,7 +18,6 @@ public class FishSM : StateMachine
     [field: SerializeField] public FishData Data { get; private set; }
     [HideInInspector] public PolygonArea fishArea;
 
-
     [field: SerializeField] public FishHead fishHead { get; private set; }
 
     public bool isBiting;

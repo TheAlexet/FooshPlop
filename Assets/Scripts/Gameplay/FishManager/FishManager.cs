@@ -7,7 +7,7 @@ public class FishManager : MonoBehaviour
     [Header("Fish Manager Values")]
     [SerializeField][Range(0.5f, 2f)] private float fishScale;
     [SerializeField][MinMaxSlider(0f, 5f)] private Vector2 spawnDelay;
-    [SerializeField] private PolygonArea fishArea;
+    [field: SerializeField] public PolygonArea FishArea { get; private set; }
     [SerializeField] private List<GameObject> spawnableFishes;
     [field: SerializeField] public FishingHook FishingHook { get; private set; }
 
@@ -19,8 +19,8 @@ public class FishManager : MonoBehaviour
 
     private GameObject currentFish;
 
-    private bool canSpawn;
-    private bool canDestroy;
+    [SerializeField] private bool canSpawn;
+    [SerializeField] private bool canDestroy;
 
     public bool isBiting { get; private set; }
     public bool isLeaving { get; private set; }
@@ -42,7 +42,7 @@ public class FishManager : MonoBehaviour
             timeSinceCanSpawn += Time.deltaTime;
             if (timeSinceCanSpawn > delayBeforeCanSpawn)
             {
-                currentFish = SpawnFish(ChooseFish(), fishArea);
+                currentFish = SpawnFish(ChooseFish(), FishArea);
                 canSpawn = false;
             }
         }

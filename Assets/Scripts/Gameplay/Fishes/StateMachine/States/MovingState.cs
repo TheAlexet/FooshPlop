@@ -32,9 +32,10 @@ public class MovingState : FishState
         Vector3 displacement = direction.normalized * Time.deltaTime * _sm.Data.TranslateSpeed;
         if (direction.magnitude > Mathf.Epsilon) { _sm.transform.Translate(displacement, Space.World); }
     }
-    private Vector3 GetDirectionNonNormalized()
+    protected Vector3 GetDirectionNonNormalized()
     {
-        return (destination - _sm.transform.position - _sm.fishHead.transform.position);
+        // return (destination - _sm.transform.position - _sm.fishHead.transform.localPosition);
+        return (destination - _sm.fishHead.transform.position);
     }
     #endregion
 

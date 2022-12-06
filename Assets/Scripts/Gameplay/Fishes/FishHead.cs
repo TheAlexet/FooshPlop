@@ -15,7 +15,6 @@ public class FishHead : MonoBehaviour
             case "HookInfluence":
                 hookSeen = true;
                 hookPosition = col.transform.position;
-                print("influence");
                 break;
 
             case "Hook":
