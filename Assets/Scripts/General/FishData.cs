@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using GD.MinMaxSlider;
 
 [Serializable]
 public class FishData

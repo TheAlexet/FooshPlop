@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8418882924923518455}
   - component: {fileID: 7147655326303850611}
   - component: {fileID: 2311049070139248810}
+  - component: {fileID: 1823733958102417335}
   m_Layer: 0
   m_Name: Test
   m_TagString: Fish
@@ -81,6 +82,18 @@ MonoBehaviour:
   <fishHead>k__BackingField: {fileID: 3636281233903812597}
   isBiting: 0
   isLeaving: 0
+--- !u!114 &1823733958102417335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435967659476087684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368ec6223d761c7a2beb26060d701362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6224952298523569302
 GameObject:
   m_ObjectHideFlags: 0
