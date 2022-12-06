@@ -11,6 +11,7 @@ public class IdleState : InteractiveState
         base.Enter();
         _sm.fishManager.SetCanSpawn(true);
         _sm.fishManager.FishingHook.gameObject.SetActive(true);
+        _sm.fishManager.FishingHook.SetSplashFX(false);
     }
 
     public override void UpdateLogic()
