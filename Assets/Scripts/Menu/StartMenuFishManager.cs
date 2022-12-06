@@ -5,10 +5,10 @@ using UnityEngine;
 public class StartMenuFishManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> fishes;
-    [SerializeField] PolygonArea fishArea;
+    public PolygonArea fishArea;
     [SerializeField] FishSpawner fishSpawner;
 
-    bool fishExists = false;
+    [SerializeField] bool fishExists = false;
     GameObject curFish;
 
     void Update()
