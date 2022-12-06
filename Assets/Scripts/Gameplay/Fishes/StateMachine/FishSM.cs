@@ -15,13 +15,14 @@ public class FishSM : StateMachine
         biteHookState = new BiteHookState(this);
     }
 
-    [field: SerializeField] public FishData Data { get; private set; }
+    [field: SerializeField] public Fish Fish { get; private set; }
+    public FishData Data { get; private set; }
     [HideInInspector] public PolygonArea fishArea;
-
     [field: SerializeField] public FishHead fishHead { get; private set; }
 
     public bool isBiting;
     public bool isLeaving;
 
+    void Awake() { Data = Fish.Data; }
     protected override BaseState GetInitialState() { return spawnState; }
 }

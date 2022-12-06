@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4440218, g: 0.49316478, b: 0.5722311, a: 1}
+  m_IndirectSpecularColor: {r: 0.18011706, g: 0.22551754, b: 0.30669218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.002388, y: -0.019165}
+  m_AnchoredPosition: {x: 0.002319336, y: -0.019042969}
   m_SizeDelta: {x: -815.04, y: -1675.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6868876
@@ -610,6 +610,81 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 2041578233}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &751777311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3847902584439000500, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_Name
+      value: PostProcess
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000502, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847902584439000503, guid: df851f630c90dec41a7eb53e209fab8a,
+        type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 058f7edf4ae8e23f589a8c27bde9b306,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df851f630c90dec41a7eb53e209fab8a, type: 3}
 --- !u!1 &788578479
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebe43eadcb236321afe43035939e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishScale: 1
 --- !u!1 &920439851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -1387,7 +1463,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1442,18 +1518,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishes:
-  - {fileID: 8952009475816687520, guid: d43c42712037ec0b1bbd152b670ca65e, type: 3}
-  - {fileID: 7858880984619529157, guid: fe8449c5ffa4fb2d9a159baab7bbc2f6, type: 3}
-  - {fileID: 7641690451370636742, guid: abb09b17de1927949a07d5471acf4b76, type: 3}
-  - {fileID: 1398200747622826122, guid: 608f31e29dd5776d4b21dad3e90ae399, type: 3}
-  - {fileID: 3583443704811762604, guid: b50b0fce4c91b3e50b5d982b0d06762a, type: 3}
-  - {fileID: 6870673073724411526, guid: 875dc4c67d4d6ad9987e19d09ee3f449, type: 3}
-  - {fileID: 715737642718038865, guid: e513204ce41e94a909b4078af9ee3e35, type: 3}
-  - {fileID: 6363546298780471194, guid: 0dc8b826ef540aa8ca903ca0b77ed61b, type: 3}
-  - {fileID: 7614241187774443652, guid: 07dfea984ec156dc3b7865d9cefa0a34, type: 3}
-  - {fileID: 2793885529407261583, guid: 797617253ea6cdc7a8f49ce0f033d20b, type: 3}
+  - {fileID: 435967659476087684, guid: bc3f7e881cf7293debd7f5da390ad699, type: 3}
   fishArea: {fileID: 247580707}
   fishSpawner: {fileID: 811900060}
+  fishExists: 0
 --- !u!1 &1530757957
 GameObject:
   m_ObjectHideFlags: 0
