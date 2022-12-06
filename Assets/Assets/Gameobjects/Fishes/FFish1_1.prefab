@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6870673073724411526
+--- !u!1 &435967659476087684
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3278822764007702773}
-  - component: {fileID: 4207703606185110897}
-  - component: {fileID: 4772913636759266818}
-  - component: {fileID: -4275650020417336639}
-  - component: {fileID: 2082477587815850559}
-  - component: {fileID: 2348119625556586712}
-  - component: {fileID: -7175036521910022300}
+  - component: {fileID: 8418882924923518455}
+  - component: {fileID: 7147655326303850611}
+  - component: {fileID: 2311049070139248810}
+  - component: {fileID: 2284695743871466256}
   m_Layer: 0
-  m_Name: Fish1_1
+  m_Name: FFish1_1
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3278822764007702773
+--- !u!4 &8418882924923518455
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
+  m_GameObject: {fileID: 435967659476087684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8053687981042778216}
+  - {fileID: 3931963569577229674}
+  - {fileID: 5094064877949006246}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4207703606185110897
+--- !u!95 &7147655326303850611
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
+  m_GameObject: {fileID: 435967659476087684}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 47fc46b4f0b9d39b28bdf08b376555fd, type: 2}
@@ -58,92 +56,129 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4772913636759266818
+--- !u!114 &2311049070139248810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
+  m_GameObject: {fileID: 435967659476087684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae0156035134a451af04a790a65bb94, type: 3}
+  m_Script: {fileID: 11500000, guid: dedb66be8cbd5c370bb20e4b593e1e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishName: Normal White, Red and Purple
-  rarity: 1
-  spawnRate: 0
-  fancyName: Magicarpe
---- !u!114 &-4275650020417336639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99300cbdbc65eccf68a6b094b7624df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishAnimator: {fileID: 0}
-  fishData: {fileID: 0}
---- !u!114 &2082477587815850559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ddda46009039211af8ce35b867f6d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _curState: 
+  <Fish>k__BackingField: {fileID: 2284695743871466256}
   fishArea: {fileID: 0}
-  moveSpeed: 0.3
-  rotationSpeed: 100
-  thresholdDist: 0.1
-  thresholdAngle: 2
-  minDelayBeforeChangeDestination: 1
-  maxDelayBeforeChangeDestination: 5
-  destination: {x: 0, y: 0, z: 0}
---- !u!136 &2348119625556586712
-CapsuleCollider:
+  <fishHead>k__BackingField: {fileID: 3636281233903812597}
+  isBiting: 0
+  isLeaving: 0
+--- !u!114 &2284695743871466256
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_GameObject: {fileID: 435967659476087684}
   m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 2.5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-7175036521910022300
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839d5b42ebca01f4da337c6ddd275ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField:
+    <FishName>k__BackingField: Test
+    <Rarity>k__BackingField: 1
+    <SpawnRate>k__BackingField: 10
+    <FancyName>k__BackingField: TestButFancy
+    <ChangeDestinationDelay>k__BackingField: {x: 4.266667, y: 8.16}
+    <CatchBeforeDelay>k__BackingField: {x: 0, y: 0}
+    <TranslateSpeed>k__BackingField: 1
+    <RotateSpeed>k__BackingField: 100
+--- !u!1 &6224952298523569302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5094064877949006246}
+  - component: {fileID: 1519536011180326107}
+  - component: {fileID: 4728908271262990359}
+  - component: {fileID: 3636281233903812597}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5094064877949006246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224952298523569302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8418882924923518455}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1519536011180326107
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870673073724411526}
+  m_GameObject: {fileID: 6224952298523569302}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &7516169064467539843
+--- !u!135 &4728908271262990359
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224952298523569302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3636281233903812597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224952298523569302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe3851eb485416648dc1ae795c7540d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hookSeen: 0
+  hookBitten: 0
+  hookPosition: {x: 0, y: 0, z: 0}
+--- !u!1001 &3538595061368363649
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3278822764007702773}
+    m_TransformParent: {fileID: 8418882924923518455}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 243015dde6466786d9d55fa596a4dc5c,
         type: 3}
@@ -242,9 +277,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 243015dde6466786d9d55fa596a4dc5c, type: 3}
---- !u!4 &8053687981042778216 stripped
+--- !u!4 &3931963569577229674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 243015dde6466786d9d55fa596a4dc5c,
     type: 3}
-  m_PrefabInstance: {fileID: 7516169064467539843}
+  m_PrefabInstance: {fileID: 3538595061368363649}
   m_PrefabAsset: {fileID: 0}

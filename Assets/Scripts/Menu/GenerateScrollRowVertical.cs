@@ -35,14 +35,11 @@ public class GenerateScrollRowVertical : MonoBehaviour
                 last_row.GetComponent<HorizontalLayoutGroup>().spacing = last_row.GetComponent<RectTransform>().sizeDelta.x / itemsPerRow / 10f;
             }
             GameObject fishButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
-            fishButton.GetComponent<RectTransform>().sizeDelta = new Vector2(300,150);
-            GameObject fish = fishesGameObjects[i]; 
+            fishButton.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 150);
+            GameObject fish = fishesGameObjects[i];
             GameObject fishOject = GameObject.Instantiate(fish, fishButton.transform.GetChild(0));
             fishOject.transform.localScale /= (itemsPerRow - 1);
-            Destroy(fishOject.GetComponent<FishMovement>());
-            Destroy(fishOject.GetComponent<FishOnSpawn>());
-
-            
+            Destroy(fishOject.GetComponent<FishSM>());
         }
 
         int emptyItems = itemsPerRow - fishesGameObjects.Count % itemsPerRow;
@@ -57,8 +54,8 @@ public class GenerateScrollRowVertical : MonoBehaviour
             for (int j = 0; j < child.childCount; j++)
             {
                 Transform grandChild = child.GetChild(j);
-                grandChild.GetComponent<Button>().onClick.AddListener(delegate{ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<FishData>());}); 
-                print(grandChild.GetChild(0).GetChild(0).GetComponent<FishData>().fancyName);
+                grandChild.GetComponent<Button>().onClick.AddListener(delegate { ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data); });
+                print(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data.FancyName);
             }
         }
     }
@@ -66,9 +63,9 @@ public class GenerateScrollRowVertical : MonoBehaviour
     public void ShowFishData(FishData fishData)
     {
         fishDataMenu.SetActive(true);
-        fishName.text = fishData.fancyName;
-        fishRarity.text = fishData.rarity.ToString();
-        fishCaught.text = db.getFishCaught(fishData.fancyName).ToString();
+        fishName.text = fishData.FancyName;
+        fishRarity.text = fishData.Rarity.ToString();
+        fishCaught.text = db.getFishCaught(fishData.FancyName).ToString();
     }
 
     public void CloseFishDataMenu()
