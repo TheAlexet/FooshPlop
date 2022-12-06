@@ -75,14 +75,12 @@ public class FishMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "HookVisionField")
         {
-            print("hook seen");
             hookSeen = true;
             //    destination = new Vector3(0f, 0f, 0f);
             destination = col.transform.position;
         }
         if (col.gameObject.tag == "Hook")
         {
-            print("hook bit");
             GameObject.Find("RodManager").GetComponent<RodController>().fishBitHook = true;
             GameObject.Find("RodManager").GetComponent<RodController>().fishBitten = gameObject;
         }

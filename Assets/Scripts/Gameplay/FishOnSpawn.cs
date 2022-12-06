@@ -11,6 +11,6 @@ public class FishOnSpawn : MonoBehaviour
     {
         fishAnimator = GetComponent<Animator>();
         fishData = GetComponent<FishData>();
-        fishAnimator.SetBool("isSSR", fishData.rarity == 5);
+        fishAnimator.SetBool("isSSR", fishData.Rarity == 5);
     }
 }

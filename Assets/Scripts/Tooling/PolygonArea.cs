@@ -23,7 +23,7 @@ public class PolygonArea : MonoBehaviour
 
     public Vector3 RandomPoint()
     {
-        int ind = new Categorical().Choice(areas);
+        int ind = Categorical.Choice(areas);
         Vector3[] triangle = triangles[ind];
 
         // Sample point inside triangle 

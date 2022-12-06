@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fish
-  - HookVisionField
   - Hook
+  - HookInfluence
+  - HookVisionField
   layers:
   - Default
   - TransparentFX
