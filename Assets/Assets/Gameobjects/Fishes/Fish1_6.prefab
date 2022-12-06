@@ -73,6 +73,7 @@ MonoBehaviour:
   fishName: Normal White, Blue and Green
   rarity: 5
   spawnRate: 0
+  fancyName: Kawaii
 --- !u!114 &2864561601956799787
 MonoBehaviour:
   m_ObjectHideFlags: 0

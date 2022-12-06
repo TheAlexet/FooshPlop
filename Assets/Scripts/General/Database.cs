@@ -24,4 +24,13 @@ public class Database : MonoBehaviour
         PlayerPrefs.SetInt("maxLevel", maxLevel);
     }
 
+    public int getFishCaught(string fishName)
+    {
+        return PlayerPrefs.GetInt(fishName, 0);
+    }
+
+   public void addFishCaught(string fishName)
+    {
+        PlayerPrefs.SetInt(fishName, getFishCaught(fishName) + 1);
+    }
 }
