@@ -73,6 +73,7 @@ MonoBehaviour:
   fishName: Koi Blue and White
   rarity: 5
   spawnRate: 6
+  fancyName: Superstar
 --- !u!114 &-1801667412741429403
 MonoBehaviour:
   m_ObjectHideFlags: 0
