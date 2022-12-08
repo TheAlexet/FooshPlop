@@ -12,6 +12,7 @@ public class FishingSM : StateMachine
 
     public Animator playerAnimator;
     public FishManager fishManager;
+    public Database db;
 
     private void Awake()
     {

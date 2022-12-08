@@ -5,7 +5,7 @@ public class SceneChange : MonoBehaviour
 {
     // [SerializeField] Database db;
     // [SerializeField] TMPro.TextMeshProUGUI acornsText;
-
+    [SerializeField] private AudioSource buttonSound;
     // public void ChangeScene(int sceneID)
     // {
     //     int level = sceneID - 1;
@@ -23,5 +23,8 @@ public class SceneChange : MonoBehaviour
     //     }
     // }
 
-    public void ChangeScene(int sceneID) { SceneManager.LoadScene(sceneID); }
+    public void ChangeScene(int sceneID) { 
+        SceneManager.LoadScene(sceneID);
+        buttonSound.Play();
+    }
 }

@@ -17,8 +17,10 @@ public class GenerateScrollRowVertical : MonoBehaviour
     [SerializeField] GameObject fishDataMenu;
     [SerializeField] TMPro.TextMeshProUGUI fishName;
     [SerializeField] TMPro.TextMeshProUGUI fishRarity;
+    [SerializeField] TMPro.TextMeshProUGUI fishAcorns;
     [SerializeField] TMPro.TextMeshProUGUI fishCaught;
     [SerializeField] Database db;
+    [SerializeField] private AudioSource buttonSound;
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class GenerateScrollRowVertical : MonoBehaviour
         for (int i = 0; i < emptyItems; i++)
         {
             GameObject fishButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
+            fishButton.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 150);
 
         }
         for (int i = 0; i < parent.childCount; i++)
@@ -53,23 +56,28 @@ public class GenerateScrollRowVertical : MonoBehaviour
             Transform child = parent.GetChild(i);
             for (int j = 0; j < child.childCount; j++)
             {
-                Transform grandChild = child.GetChild(j);
-                grandChild.GetComponent<Button>().onClick.AddListener(delegate { ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data); });
-                print(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data.FancyName);
+                if(i * 3f + j + 1f <= fishesGameObjects.Count)
+                {
+                    Transform grandChild = child.GetChild(j);
+                    grandChild.GetComponent<Button>().onClick.AddListener(delegate { ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data); });
+                } 
             }
         }
     }
 
     public void ShowFishData(FishData fishData)
     {
+        buttonSound.Play();
         fishDataMenu.SetActive(true);
         fishName.text = fishData.FancyName;
         fishRarity.text = fishData.Rarity.ToString();
+        fishAcorns.text = (fishData.Rarity * 10f).ToString();
         fishCaught.text = db.getFishCaught(fishData.FancyName).ToString();
     }
 
     public void CloseFishDataMenu()
     {
         fishDataMenu.SetActive(false);
+        buttonSound.Play();
     }
 }
