@@ -19,6 +19,8 @@ public class AttemptState : InteractiveState
 
         if (_gyroRotationRate > 3f)
         {
+            _sm.db.setAcorns(_sm.db.getAcorns() + _sm.fishManager.GetCurrentFish().Data.Rarity * 10);
+            _sm.db.addFishCaught(_sm.fishManager.GetCurrentFish().Data.FancyName);
             _sm.playerAnimator.SetTrigger("Pull");
             _sm.ChangeState(_sm.pullState);
         }

@@ -77,6 +77,8 @@ public class FishManager : MonoBehaviour
 
     public void DestroyCurrentFish() { Destroy(currentFish); }
 
+    public Fish GetCurrentFish() { return currentFish.GetComponent<Fish>(); }
+
     GameObject ChooseFish()
     {
         return spawnableFishes[Categorical.Choice(fishesSpawnRate)];
