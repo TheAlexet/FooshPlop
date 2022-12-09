@@ -7,4 +7,5 @@ using System;
 public class AssetData
 {
     [field: SerializeField] public List<GameObject> Rods { get; private set; }
+    [field: SerializeField] public List<GameObject> Hats { get; private set; }
 }
