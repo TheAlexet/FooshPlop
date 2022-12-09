@@ -19,8 +19,10 @@ public class GenerateScrollRowVertical : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI fishRarity;
     [SerializeField] TMPro.TextMeshProUGUI fishAcorns;
     [SerializeField] TMPro.TextMeshProUGUI fishCaught;
-    [SerializeField] Database db;
+    private DatabaseAccess db;
     [SerializeField] private AudioSource buttonSound;
+
+    private void Awake() { db = new DatabaseAccess(); }
 
     void Start()
     {
@@ -56,11 +58,11 @@ public class GenerateScrollRowVertical : MonoBehaviour
             Transform child = parent.GetChild(i);
             for (int j = 0; j < child.childCount; j++)
             {
-                if(i * 3f + j + 1f <= fishesGameObjects.Count)
+                if (i * 3f + j + 1f <= fishesGameObjects.Count)
                 {
                     Transform grandChild = child.GetChild(j);
                     grandChild.GetComponent<Button>().onClick.AddListener(delegate { ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data); });
-                } 
+                }
             }
         }
     }

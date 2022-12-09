@@ -8,6 +8,8 @@ public class CharacterCustomization : MonoBehaviour
     [field: SerializeField] private Transform PlayerHand;
     [field: SerializeField] private Transform PlayerHead;
 
+    private DatabaseAccess Database;
+
     private List<GameObject> Rods;
     private int currentRodIndex;
     private GameObject currentRod;
@@ -18,12 +20,15 @@ public class CharacterCustomization : MonoBehaviour
 
     private void Awake()
     {
+        Database = new DatabaseAccess();
+
         Rods = AssetSO.AssetData.Rods;
         Hats = AssetSO.AssetData.Hats;
 
+        currentRodIndex = Database.GetCurrentRodIndex();
+        currentHatIndex = Database.GetCurrentHatIndex();
         SpawnRod();
         SpawnHat();
-        // currentRod = PlayerRef.Get(currentRod) smthg like that
     }
 
     public void SpawnRod()
@@ -39,12 +44,14 @@ public class CharacterCustomization : MonoBehaviour
     {
         Destroy(currentRod);
         currentRodIndex = (currentRodIndex + 1) % Rods.Count;
+        Database.SetCurrentRodIndex(currentRodIndex);
         SpawnRod();
     }
     public void NextHat()
     {
         Destroy(currentHat);
         currentHatIndex = (currentHatIndex + 1) % Hats.Count;
+        Database.SetCurrentHatIndex(currentHatIndex);
         SpawnHat();
     }
 }

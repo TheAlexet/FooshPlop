@@ -12,10 +12,12 @@ public class FishingSM : StateMachine
 
     public Animator playerAnimator;
     public FishManager fishManager;
-    public Database db;
+    public DatabaseAccess db;
 
     private void Awake()
     {
+        db = new DatabaseAccess();
+
         zeroState = new ZeroState(this);
         idleState = new IdleState(this);
         castState = new CastState(this);

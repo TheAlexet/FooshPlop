@@ -439,11 +439,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3132009486398682241, guid: ee2e114d69c0740579a9990cdcf08d8b,
         type: 3}
-      propertyPath: db
-      value: 
-      objectReference: {fileID: 265797869}
-    - target: {fileID: -3132009486398682241, guid: ee2e114d69c0740579a9990cdcf08d8b,
-        type: 3}
       propertyPath: fishManager
       value: 
       objectReference: {fileID: 832753533}
@@ -509,24 +504,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee2e114d69c0740579a9990cdcf08d8b, type: 3}
---- !u!1 &265797868 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8684070206421551486, guid: ee2e114d69c0740579a9990cdcf08d8b,
-    type: 3}
-  m_PrefabInstance: {fileID: 265797867}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &265797869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265797868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8171d68cc7728ee44a07b120f3c80c2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &322910430
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: 820}
+  m_AnchoredPosition: {x: 430, y: 917}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227158524

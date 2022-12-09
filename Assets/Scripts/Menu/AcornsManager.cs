@@ -5,7 +5,9 @@ using UnityEngine;
 public class AcornsManager : MonoBehaviour
 {
     [SerializeField] TMPro.TextMeshProUGUI acornsText;
-    [SerializeField] Database db;
+    private DatabaseAccess db;
+
+    private void Awake() { db = new DatabaseAccess(); }
 
     // Start is called before the first frame update
     void Start()

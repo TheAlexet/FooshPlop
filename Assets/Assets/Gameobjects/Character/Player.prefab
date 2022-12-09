@@ -1086,6 +1086,7 @@ MonoBehaviour:
   _curState: 
   playerAnimator: {fileID: 7680891096215698324}
   fishManager: {fileID: 0}
+  db: {fileID: 0}
 --- !u!1 &8815248816208054136
 GameObject:
   m_ObjectHideFlags: 0
