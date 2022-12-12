@@ -35,8 +35,12 @@ public class DatabaseAccess
     }
 
     public void SetCurrentHatIndex(int hatIndex) { PlayerPrefs.SetInt("hatIndex", hatIndex); }
-    public int GetCurrentHatIndex() { return PlayerPrefs.GetInt("hatIndex"); }
+    public int GetCurrentHatIndex() { return PlayerPrefs.GetInt("hatIndex", 0); }
     public void SetCurrentRodIndex(int rodIndex) { PlayerPrefs.SetInt("rodIndex", rodIndex); }
-    public int GetCurrentRodIndex() { return PlayerPrefs.GetInt("rodIndex"); }
+    public int GetCurrentRodIndex() { return PlayerPrefs.GetInt("rodIndex", 0); }
+
+    public void SetCurrentSlipIndex(int slipIndex) { PlayerPrefs.SetInt("slipIndex", slipIndex); }
+
+    public int GetCurrentSlipIndex() { return PlayerPrefs.GetInt("slipIndex", 0); }
 
 }
