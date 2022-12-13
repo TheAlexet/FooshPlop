@@ -9,6 +9,8 @@ public class CharacterCustomization : MonoBehaviour
     [field: SerializeField] private Transform PlayerHead;
     [field: SerializeField] private SkinnedMeshRenderer SlipMesh;
 
+    [SerializeField] private AudioSource buttonSound;
+
 
     private DatabaseAccess Database;
 
@@ -31,7 +33,6 @@ public class CharacterCustomization : MonoBehaviour
         Rods = AssetSO.AssetData.Rods;
         Hats = AssetSO.AssetData.Hats;
         Slips = AssetSO.AssetData.Slips;
-        // Debug.Log(Slips.Count);
 
         currentRodIndex = Database.GetCurrentRodIndex();
         currentHatIndex = Database.GetCurrentHatIndex();
@@ -39,8 +40,6 @@ public class CharacterCustomization : MonoBehaviour
         SpawnRod();
         SpawnHat();
         ApplySlip();
-        // Debug.Log(Slips.Count);
-
     }
 
     public void SpawnRod()
@@ -63,6 +62,7 @@ public class CharacterCustomization : MonoBehaviour
         currentRodIndex = (currentRodIndex + 1) % Rods.Count;
         Database.SetCurrentRodIndex(currentRodIndex);
         SpawnRod();
+        buttonSound.Play();
     }
     public void NextHat()
     {
@@ -70,15 +70,14 @@ public class CharacterCustomization : MonoBehaviour
         currentHatIndex = (currentHatIndex + 1) % Hats.Count;
         Database.SetCurrentHatIndex(currentHatIndex);
         SpawnHat();
+        buttonSound.Play();
     }
     public void NextSlip()
     {
-        Debug.Log(Slips.Count);
-
-        // Destroy(currentSlip);
         currentSlipIndex = (currentSlipIndex + 1) % Slips.Count;
         Database.SetCurrentSlipIndex(currentSlipIndex);
         ApplySlip();
+        buttonSound.Play();
     }
 
     private Material[] MatArray()
