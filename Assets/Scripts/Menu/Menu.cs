@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
     string menu = "main";
 
     [SerializeField]
-    private Database db;
+    private DatabaseAccess db;
 
     [SerializeField]
     private Text acornsText;
@@ -29,14 +29,14 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       initializePlayer();
-       initializeAcornsText();
+        initializePlayer();
+        initializeAcornsText();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void initializePlayer()
@@ -53,36 +53,36 @@ public class Menu : MonoBehaviour
 
     public void changeMenu(string newMenu)
     {
-        if(menu != newMenu)
+        if (menu != newMenu)
         {
             getMenu(menu).SetActive(false);
             getMenu(newMenu).SetActive(true);
             menu = newMenu;
             buttonSound.Play();
-            if(menu == "character")
+            if (menu == "character")
             {
-                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
-                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
-            else if(menu == "main")
+            else if (menu == "main")
             {
-                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
-                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
+                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
-            else if(menu == "fish")
+            else if (menu == "fish")
             {
-                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255,255,255,255);
-                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255,255,255,150);
+                GameObject.Find("CharacterButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                GameObject.Find("MainButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                GameObject.Find("FishButton").transform.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             }
         }
     }
 
     private GameObject getMenu(string menuName)
     {
-        switch(menuName)
+        switch (menuName)
         {
             case "character":
                 return characterMenu;
@@ -90,8 +90,8 @@ public class Menu : MonoBehaviour
                 return mainMenu;
             case "fish":
                 return fishMenu;
-             default:
-                return mainMenu;                    
+            default:
+                return mainMenu;
         }
     }
 }

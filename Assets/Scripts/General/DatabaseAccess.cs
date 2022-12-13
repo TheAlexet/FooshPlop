@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Database : MonoBehaviour
+public class DatabaseAccess
 {
     public int getAcorns()
     {
@@ -29,8 +29,18 @@ public class Database : MonoBehaviour
         return PlayerPrefs.GetInt(fishName, 0);
     }
 
-   public void addFishCaught(string fishName)
+    public void addFishCaught(string fishName)
     {
         PlayerPrefs.SetInt(fishName, getFishCaught(fishName) + 1);
     }
+
+    public void SetCurrentHatIndex(int hatIndex) { PlayerPrefs.SetInt("hatIndex", hatIndex); }
+    public int GetCurrentHatIndex() { return PlayerPrefs.GetInt("hatIndex", 0); }
+    public void SetCurrentRodIndex(int rodIndex) { PlayerPrefs.SetInt("rodIndex", rodIndex); }
+    public int GetCurrentRodIndex() { return PlayerPrefs.GetInt("rodIndex", 0); }
+
+    public void SetCurrentSlipIndex(int slipIndex) { PlayerPrefs.SetInt("slipIndex", slipIndex); }
+
+    public int GetCurrentSlipIndex() { return PlayerPrefs.GetInt("slipIndex", 0); }
+
 }

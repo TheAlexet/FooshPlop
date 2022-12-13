@@ -12,8 +12,7 @@ public class RodController : MonoBehaviour
     [SerializeField]
     private GameObject fishingHook;
 
-    [SerializeField]
-    private Database db;
+    private DatabaseAccess db;
 
     [SerializeField]
     private FishManager fishManager;
@@ -33,6 +32,8 @@ public class RodController : MonoBehaviour
     public string notCaughtState = "NoCaught";
 
     public GameObject splashFX;
+
+    private void Awake() { db = new DatabaseAccess(); }
 
     // Start is called before the first frame update
     void Start()
