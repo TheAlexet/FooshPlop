@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 772209494}
-  m_IndirectSpecularColor: {r: 0.312487, g: 0.26617375, b: 0.3818256, a: 1}
+  m_IndirectSpecularColor: {r: 0.31826138, g: 0.27008286, b: 0.38368696, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 09fd6755aa0c8b14583ea0bff92cc0e5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.10375136, g: 0, b: 0.2830189, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -530,14 +530,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772209493}
-  m_LocalRotation: {x: 0.32251978, y: 0.5856787, z: -0.27310658, w: 0.6916461}
+  m_LocalRotation: {x: -0.15676256, y: -0.22993669, z: 0.94894236, w: -0.14853597}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 50, y: 80.515, z: 0}
+  m_LocalEulerAnglesHint: {x: 151.121, y: -195.175, z: 13.863998}
 --- !u!114 &772209496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +693,62 @@ PrefabInstance:
     - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
         type: 3}
       propertyPath: spawnableFishes.Array.data[5]
+      value: 
+      objectReference: {fileID: 435967659476087684, guid: 5971ec031898ff8acac0d512ccb3b837,
+        type: 3}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishScale>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<SpawnDelay>k__BackingField.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<SpawnDelay>k__BackingField.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 435967659476087684, guid: bc3f7e881cf7293debd7f5da390ad699,
+        type: 3}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 435967659476087684, guid: 21258840cb588554abda93583f75f56f,
+        type: 3}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 435967659476087684, guid: da394151ae1435fc8aafd36bdc7d20f9,
+        type: 3}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 435967659476087684, guid: 11e31844485f9ae33a935f4b30a79b59,
+        type: 3}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.data[4]
+      value: 
+      objectReference: {fileID: 435967659476087684, guid: 8644f48dad944d59e9c3af3765aa354b,
+        type: 3}
+    - target: {fileID: 7353950217499080879, guid: cf6e9bfaafce86978b69b0e348cfebe8,
+        type: 3}
+      propertyPath: SceneData.<FishesInScene>k__BackingField.Array.data[5]
       value: 
       objectReference: {fileID: 435967659476087684, guid: 5971ec031898ff8acac0d512ccb3b837,
         type: 3}
@@ -2009,7 +2065,7 @@ PrefabInstance:
     - target: {fileID: 4710402978935041206, guid: 62db4bf9d67f2376ca4879f45ed0f15c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.21
+      value: 1.372
       objectReference: {fileID: 0}
     - target: {fileID: 4710402978935041206, guid: 62db4bf9d67f2376ca4879f45ed0f15c,
         type: 3}
