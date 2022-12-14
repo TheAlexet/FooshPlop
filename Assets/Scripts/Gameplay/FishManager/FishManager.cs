@@ -6,10 +6,9 @@ using GD.MinMaxSlider;
 public class FishManager : MonoBehaviour
 {
     [Header("Fish Manager Values")]
-    [SerializeField][Range(0.5f, 2f)] private float fishScale;
-    [SerializeField][MinMaxSlider(0f, 5f)] private Vector2 spawnDelay;
+    [SerializeField] SceneData SceneData;
     [field: SerializeField] public PolygonArea FishArea { get; private set; }
-    [SerializeField] private List<GameObject> spawnableFishes;
+    private List<GameObject> spawnableFishes;
     [field: SerializeField] public FishingHook FishingHook { get; private set; }
 
 
@@ -26,12 +25,18 @@ public class FishManager : MonoBehaviour
     public bool isBiting { get; private set; }
     public bool isLeaving { get; private set; }
 
+    void Awake()
+    {
+        spawnableFishes = SceneData.FishesInScene;
+
+    }
+
     void Start()
     {
         fishesSpawnRate = new List<float>();
         foreach (GameObject fish in spawnableFishes)
         {
-            float rate = fish.GetComponent<FishSM>().Data.SpawnRate;
+            float rate = fish.GetComponent<Fish>().Data.SpawnRate;
             fishesSpawnRate.Add(rate);
         }
     }
@@ -69,7 +74,7 @@ public class FishManager : MonoBehaviour
         if (canSpawn)
         {
             timeSinceCanSpawn = 0f;
-            delayBeforeCanSpawn = Random.Range(spawnDelay.x, spawnDelay.y);
+            delayBeforeCanSpawn = Random.Range(SceneData.SpawnDelay.x, SceneData.SpawnDelay.y);
         }
     }
 
@@ -81,6 +86,7 @@ public class FishManager : MonoBehaviour
 
     GameObject ChooseFish()
     {
+        Debug.Log(fishesSpawnRate.Count);
         return spawnableFishes[Categorical.Choice(fishesSpawnRate)];
     }
 
@@ -88,7 +94,7 @@ public class FishManager : MonoBehaviour
     {
         GameObject curFish = GameObject.Instantiate(fish);
         curFish.transform.position = fishArea.RandomPoint();
-        curFish.transform.localScale = fishScale * curFish.transform.localScale;
+        curFish.transform.localScale = SceneData.FishScale * curFish.transform.localScale;
         curFish.GetComponent<FishSM>().fishArea = fishArea;
         return curFish;
     }

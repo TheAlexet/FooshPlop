@@ -1166,13 +1166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140ef2cb005b1042daa7e1bf9b7d3e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AssetSO>k__BackingField: {fileID: 11400000, guid: b5bf526b40770a594b1bd50dab0889a8,
+  <CustomizationSO>k__BackingField: {fileID: 11400000, guid: 9c48d5bae7fb222a1902bb66c4ec3d6b,
     type: 2}
   PlayerHand: {fileID: 7930240094969379255}
   PlayerHead: {fileID: 6766866233654109995}
-  PlayerBody: {fileID: 4016633414344095448}
-  RootBone: {fileID: 7739811303895549226}
   SlipMesh: {fileID: 4285674558201842865}
+  buttonSound: {fileID: 0}
   Slips: []
   currentSlipIndex: 0
 --- !u!114 &-3132009486398682241

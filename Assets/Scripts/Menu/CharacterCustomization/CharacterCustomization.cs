@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterCustomization : MonoBehaviour
 {
-    [field: SerializeField] public AssetScriptableObject AssetSO { get; private set; }
+    [field: SerializeField] public CustomizationScriptableObject CustomizationSO { get; private set; }
     [field: SerializeField] private Transform PlayerHand;
     [field: SerializeField] private Transform PlayerHead;
     [field: SerializeField] private SkinnedMeshRenderer SlipMesh;
@@ -30,9 +30,9 @@ public class CharacterCustomization : MonoBehaviour
     {
         Database = new DatabaseAccess();
 
-        Rods = AssetSO.AssetData.Rods;
-        Hats = AssetSO.AssetData.Hats;
-        Slips = AssetSO.AssetData.Slips;
+        Rods = CustomizationSO.CustomizationData.Rods;
+        Hats = CustomizationSO.CustomizationData.Hats;
+        Slips = CustomizationSO.CustomizationData.Slips;
 
         currentRodIndex = Database.GetCurrentRodIndex();
         currentHatIndex = Database.GetCurrentHatIndex();
@@ -83,7 +83,7 @@ public class CharacterCustomization : MonoBehaviour
     private Material[] MatArray()
     {
         return new Material[2]{
-            AssetSO.AssetData.Skin, Slips[currentSlipIndex]
+            CustomizationSO.CustomizationData.Skin, Slips[currentSlipIndex]
         };
     }
 }

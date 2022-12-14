@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class AssetData
+public class CustomizationData
 {
     [field: SerializeField] public List<GameObject> Rods { get; private set; }
     [field: SerializeField] public List<GameObject> Hats { get; private set; }
