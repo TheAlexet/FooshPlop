@@ -14,6 +14,8 @@ public class ToHookState : MovingState
     {
         base.UpdateLogic();
 
+        if (!_sm.fishHead.hookSeen) _sm.ChangeState(_sm.randomState);
+
         if (_sm.fishHead.hookBitten) _sm.ChangeState(_sm.biteHookState);
     }
     #endregion

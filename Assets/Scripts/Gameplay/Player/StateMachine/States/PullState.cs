@@ -12,6 +12,8 @@ public class PullState : NonInteractiveState
         _sm.fishManager.FishingHook.forceNotSplash = false;
         _sm.fishManager.FishingHook.SetSplashFX(false);
         _sm.fishManager.FishingHook.gameObject.SetActive(false);
+
+        _sm.fishManager.SetCanSpawn(false);
     }
 
     public override void UpdateLogic()

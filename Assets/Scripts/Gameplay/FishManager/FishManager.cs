@@ -28,7 +28,6 @@ public class FishManager : MonoBehaviour
     void Awake()
     {
         spawnableFishes = SceneData.FishesInScene;
-
     }
 
     void Start()

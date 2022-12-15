@@ -10,6 +10,7 @@ public class FishHead : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        ReliableOnTriggerExit.NotifyTriggerEnter(col, gameObject, OnTriggerExit);
         switch (col.gameObject.tag)
         {
             case "HookInfluence":
@@ -25,6 +26,7 @@ public class FishHead : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
+        ReliableOnTriggerExit.NotifyTriggerExit(col, gameObject);
         switch (col.gameObject.tag)
         {
             case "HookInfluence":
