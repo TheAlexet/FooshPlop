@@ -5,8 +5,8 @@ public class MovingState : FishState
     public MovingState(string name, FishSM stateMachine) : base(name, stateMachine) { }
     protected Vector3 destination;
     protected Vector3 direction;
-    private float epsilonMove = 0.1f;
-    private float epsilonDegree = 1f;
+    private float epsilonMove = 0.2f;
+    private float epsilonDegree = 5f;
 
     #region State Methods
     public override void UpdatePhysics() { StepToDestination(); }
