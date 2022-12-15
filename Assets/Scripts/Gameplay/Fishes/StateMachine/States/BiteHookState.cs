@@ -19,6 +19,8 @@ public class BiteHookState : FishState
     {
         base.UpdateLogic();
 
+        if (!_sm.fishHead.hookBitten) { _sm.ChangeState(_sm.randomState); }
+
         timeSinceBitten += Time.deltaTime;
         if (timeSinceBitten > delayBeforeCanLeave)
             _sm.isLeaving = true;

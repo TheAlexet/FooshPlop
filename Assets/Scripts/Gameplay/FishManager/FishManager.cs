@@ -28,7 +28,6 @@ public class FishManager : MonoBehaviour
     void Awake()
     {
         spawnableFishes = SceneData.FishesInScene;
-
     }
 
     void Start()
@@ -84,11 +83,7 @@ public class FishManager : MonoBehaviour
 
     public Fish GetCurrentFish() { return currentFish.GetComponent<Fish>(); }
 
-    GameObject ChooseFish()
-    {
-        Debug.Log(fishesSpawnRate.Count);
-        return spawnableFishes[Categorical.Choice(fishesSpawnRate)];
-    }
+    GameObject ChooseFish() { return spawnableFishes[Categorical.Choice(fishesSpawnRate)]; }
 
     GameObject SpawnFish(GameObject fish, PolygonArea fishArea)
     {
