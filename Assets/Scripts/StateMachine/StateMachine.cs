@@ -41,10 +41,10 @@ public class StateMachine : MonoBehaviour
         return null;
     }
 
-    private void OnGUI()
-    {
-        _curState = currentState != null ? currentState.name : "(no current state)";
-        GUILayout.Label($"<color='black'><size=100>{_curState}</size></color>");
-    }
+    // private void OnGUI()
+    // {
+    //     _curState = currentState != null ? currentState.name : "(no current state)";
+    //     GUILayout.Label($"<color='black'><size=100>{_curState}</size></color>");
+    // }
 
 }
