@@ -16,11 +16,15 @@ public class FishManager : MonoBehaviour
 
     private float delayBeforeCanSpawn;
     private float timeSinceCanSpawn;
+    private float timeSinceFishCaughtMenuActive = 0f;
 
     private GameObject currentFish;
 
     [SerializeField] private bool canSpawn;
     [SerializeField] private bool canDestroy;
+    [SerializeField] GameObject fishCaughtMenu;
+    [SerializeField] TMPro.TextMeshProUGUI fishCaughtName;
+    [SerializeField] TMPro.TextMeshProUGUI fishCaughtAcorns;
 
     public bool isBiting { get; private set; }
     public bool isLeaving { get; private set; }
@@ -42,6 +46,16 @@ public class FishManager : MonoBehaviour
 
     void Update()
     {
+        if(timeSinceFishCaughtMenuActive > 3f)
+        {
+            fishCaughtMenu.SetActive(false);
+        }
+        else
+        {
+            timeSinceFishCaughtMenuActive += Time.deltaTime;
+            fishCaughtMenu.transform.localPosition = new Vector3(fishCaughtMenu.transform.localPosition.x, fishCaughtMenu.transform.localPosition.y + 0.5f, fishCaughtMenu.transform.localPosition.z - 0.5f);
+        }
+
         if (canSpawn && currentFish == null)
         {
             timeSinceCanSpawn += Time.deltaTime;
@@ -92,5 +106,14 @@ public class FishManager : MonoBehaviour
         curFish.transform.localScale = SceneData.FishScale * curFish.transform.localScale;
         curFish.GetComponent<FishSM>().fishArea = fishArea;
         return curFish;
+    }
+
+    public void ShowFishCaught()
+    {
+        timeSinceFishCaughtMenuActive = 0f;
+        fishCaughtMenu.transform.localPosition = new Vector3(0f, 100f, -9450f);
+        fishCaughtMenu.SetActive(true);
+        fishCaughtName.text = "+ 1 " + GetCurrentFish().Data.FancyName;
+        fishCaughtAcorns.text = "+ " + (GetCurrentFish().Data.Rarity * 10).ToString() + " acorns";
     }
 }
