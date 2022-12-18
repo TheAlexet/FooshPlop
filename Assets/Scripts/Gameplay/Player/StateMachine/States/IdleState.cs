@@ -22,6 +22,7 @@ public class IdleState : InteractiveState
         // . transition to "Zero" state if input > 3
         if (_gyroRotationRate > 3f)
         {
+            _sm.retrieveSound.Play();
             _sm.playerAnimator.SetTrigger("Pull");
             _sm.ChangeState(_sm.pullState);
         }

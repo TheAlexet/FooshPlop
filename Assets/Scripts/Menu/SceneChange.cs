@@ -7,7 +7,7 @@ public class SceneChange : MonoBehaviour
 
     public void ChangeScene(int sceneID)
     {
-        SceneManager.LoadScene(sceneID);
         buttonSound.Play();
+        SceneManager.LoadScene(sceneID);
     }
 }
