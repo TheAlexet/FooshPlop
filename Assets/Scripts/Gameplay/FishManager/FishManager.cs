@@ -25,6 +25,7 @@ public class FishManager : MonoBehaviour
     [SerializeField] GameObject fishCaughtMenu;
     [SerializeField] TMPro.TextMeshProUGUI fishCaughtName;
     [SerializeField] TMPro.TextMeshProUGUI fishCaughtAcorns;
+    [SerializeField] AudioSource caughtSound;
 
     public bool isBiting { get; private set; }
     public bool isLeaving { get; private set; }
@@ -110,6 +111,7 @@ public class FishManager : MonoBehaviour
 
     public void ShowFishCaught()
     {
+        caughtSound.Play();
         timeSinceFishCaughtMenuActive = 0f;
         fishCaughtMenu.transform.localPosition = new Vector3(0f, 100f, -9450f);
         fishCaughtMenu.SetActive(true);

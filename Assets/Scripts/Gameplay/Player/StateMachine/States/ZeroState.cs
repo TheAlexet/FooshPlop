@@ -12,6 +12,7 @@ public class ZeroState : InteractiveState
         // . transition to "Cast" state if input < -3
         if (_gyroRotationRate < -3f)
         {
+            _sm.throwSound.Play();
             _sm.playerAnimator.SetTrigger("Cast");
             stateMachine.ChangeState(_sm.castState);
         }
