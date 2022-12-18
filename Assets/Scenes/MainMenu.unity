@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18011706, g: 0.22551754, b: 0.30669218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1291,6 +1291,12 @@ MonoBehaviour:
   - {fileID: 435967659476087684, guid: 2b1ace625d3c56445aff36227a954aad, type: 3}
   - {fileID: 435967659476087684, guid: 0f9542245f1baef3a996f9bd80361d40, type: 3}
   - {fileID: 435967659476087684, guid: 66975d20f13b4b9169c427a252fa6f1d, type: 3}
+  - {fileID: 435967659476087684, guid: 005948dea56d487718ecf4e5a1b03aa1, type: 3}
+  - {fileID: 435967659476087684, guid: 1c47731e98957cd4bace91d4dba7cf8b, type: 3}
+  - {fileID: 435967659476087684, guid: c2cdbbc586fad1aadade1e3fa121a8b0, type: 3}
+  - {fileID: 435967659476087684, guid: 99477786e3e983325a8bfbd916c02daf, type: 3}
+  - {fileID: 435967659476087684, guid: 8a70f7e1346abe462bf1e9fdb3aa8de5, type: 3}
+  - {fileID: 435967659476087684, guid: 4a84d4ae7313f32ac9f6bfbd72f03df0, type: 3}
   buttonGameObject: {fileID: 463194572503298833, guid: 289673b20989bf2228714ea976d86c4b,
     type: 3}
   parent: {fileID: 2004486957}
