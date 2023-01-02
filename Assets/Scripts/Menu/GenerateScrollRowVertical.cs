@@ -9,6 +9,7 @@ public class GenerateScrollRowVertical : MonoBehaviour
     public int itemsPerRow = 3;
 
     [SerializeField] List<GameObject> fishesGameObjects;
+    [SerializeField] List<GameObject> fishesButtons;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Transform parent;
     GameObject last_row;
@@ -26,6 +27,7 @@ public class GenerateScrollRowVertical : MonoBehaviour
 
     void Start()
     {
+        fishesButtons = new List<GameObject>();
         fishDataMenu.SetActive(false);
         for (int i = 0; i < fishesGameObjects.Count; i++)
         {
@@ -44,8 +46,8 @@ public class GenerateScrollRowVertical : MonoBehaviour
             GameObject fishOject = GameObject.Instantiate(fish, fishButton.transform.GetChild(0));
             fishOject.transform.localScale /= (itemsPerRow - 1);
             Destroy(fishOject.GetComponent<FishSM>());
+            fishesButtons.Add(fishButton);
         }
-
         int emptyItems = itemsPerRow - fishesGameObjects.Count % itemsPerRow;
         for (int i = 0; i < emptyItems; i++)
         {
@@ -63,6 +65,21 @@ public class GenerateScrollRowVertical : MonoBehaviour
                     Transform grandChild = child.GetChild(j);
                     grandChild.GetComponent<Button>().onClick.AddListener(delegate { ShowFishData(grandChild.GetChild(0).GetChild(0).GetComponent<Fish>().Data); });
                 }
+            }
+        }
+    }
+
+    void Update()
+    {
+        for(int i = 0; i < fishesButtons.Count; i++)
+        {
+            if(fishesButtons[i].transform.position.y > 1.6f || fishesButtons[i].transform.position.y < 0.55)
+            {
+                fishesButtons[i].SetActive(false);
+            }
+            else
+            {
+                fishesButtons[i].SetActive(true);
             }
         }
     }
