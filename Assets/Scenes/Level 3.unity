@@ -637,7 +637,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259190938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9450}
+  m_LocalPosition: {x: 0, y: 0, z: -11000}
   m_LocalScale: {x: 1.0003724, y: 1.0003723, z: 1.0003723}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -648,7 +648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100.00037}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 700, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &259190940
@@ -2869,6 +2869,11 @@ PrefabInstance:
       propertyPath: retrieveSound
       value: 
       objectReference: {fileID: 108779327}
+    - target: {fileID: 6204313967302244200, guid: 4c28abd39ffbc62afb6aa3c1442602a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8684070206421551486, guid: 4c28abd39ffbc62afb6aa3c1442602a8,
         type: 3}
       propertyPath: m_Name

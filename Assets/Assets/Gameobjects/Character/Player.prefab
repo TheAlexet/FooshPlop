@@ -966,7 +966,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6204313967302244200}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1189,3 +1189,5 @@ MonoBehaviour:
   _curState: 
   playerAnimator: {fileID: 7680891096215698324}
   fishManager: {fileID: 0}
+  throwSound: {fileID: 0}
+  retrieveSound: {fileID: 0}
