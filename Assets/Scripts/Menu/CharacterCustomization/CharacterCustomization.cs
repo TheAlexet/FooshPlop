@@ -11,9 +11,6 @@ public class CharacterCustomization : MonoBehaviour
 
     [SerializeField] private AudioSource buttonSound;
 
-
-    private DatabaseAccess Database;
-
     private List<GameObject> Rods;
     private int currentRodIndex;
     private GameObject currentRod;
@@ -28,8 +25,6 @@ public class CharacterCustomization : MonoBehaviour
 
     private void Awake()
     {
-        Database = new DatabaseAccess();
-
         Rods = CustomizationSO.CustomizationData.Rods;
         Hats = CustomizationSO.CustomizationData.Hats;
         Slips = CustomizationSO.CustomizationData.Slips;

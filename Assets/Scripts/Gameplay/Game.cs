@@ -17,7 +17,6 @@ public class Game : MonoBehaviour
     bool positiveShake = true; //To count the shakes
     bool fishBit = false; //If the fish bit the hook
 
-    private DatabaseAccess db;
 
     [SerializeField]
     private Text chronoText;
@@ -46,9 +45,6 @@ public class Game : MonoBehaviour
     [SerializeField]
     private GameObject fishHook;
 
-    // Start is called before the first frame update
-
-    private void Awake() { db = new DatabaseAccess(); }
 
     void Start()
     {
@@ -220,7 +216,7 @@ public class Game : MonoBehaviour
         gameTime = 0;
         pauseGame();
         finishResultText.text = "Fish: " + fishCaught + "\nAcorns: " + acornsWon;
-        db.setAcorns(db.getAcorns() + acornsWon);
+        Database.IncrAcorns(acornsWon);
         finishMenu.SetActive(true);
     }
 

@@ -12,7 +12,6 @@ public class RodController : MonoBehaviour
     [SerializeField]
     private GameObject fishingHook;
 
-    private DatabaseAccess db;
 
     [SerializeField]
     private FishManager fishManager;
@@ -33,7 +32,6 @@ public class RodController : MonoBehaviour
 
     public GameObject splashFX;
 
-    private void Awake() { db = new DatabaseAccess(); }
 
     // Start is called before the first frame update
     void Start()
@@ -129,8 +127,8 @@ public class RodController : MonoBehaviour
         else if (Input.gyro.rotationRateUnbiased.x > 3) //Fish caught in time
         {
             int acornsWon = fishBitten.GetComponent<FishData>().Rarity * 10;
-            db.setAcorns(db.getAcorns() + acornsWon);
-            print("Total acorns: " + db.getAcorns().ToString());
+            Database.IncrAcorns(acornsWon);
+            print("Total acorns: " + Database.getAcorns().ToString());
             timeToCatch = 2f;
             remainingTimeToCatch = 0;
             // fishManager.fishCount -= 1;

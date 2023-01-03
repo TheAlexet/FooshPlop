@@ -12,13 +12,11 @@ public class FishingSM : StateMachine
 
     public Animator playerAnimator;
     public FishManager fishManager;
-    public DatabaseAccess db;
     public AudioSource throwSound;
     public AudioSource retrieveSound;
 
     private void Awake()
     {
-        db = new DatabaseAccess();
 
         zeroState = new ZeroState(this);
         idleState = new IdleState(this);

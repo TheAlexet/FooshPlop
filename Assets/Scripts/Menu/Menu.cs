@@ -8,8 +8,6 @@ public class Menu : MonoBehaviour
     Player player;
     string menu = "main";
 
-    [SerializeField]
-    private DatabaseAccess db;
 
     [SerializeField]
     private Text acornsText;
@@ -42,8 +40,8 @@ public class Menu : MonoBehaviour
     void initializePlayer()
     {
         player = new Player();
-        player.setAcorns(db.getAcorns());
-        player.setMaxLevel(db.getMaxLevel());
+        player.setAcorns(Database.getAcorns());
+        player.setMaxLevel(Database.getMaxLevel());
     }
 
     void initializeAcornsText()
