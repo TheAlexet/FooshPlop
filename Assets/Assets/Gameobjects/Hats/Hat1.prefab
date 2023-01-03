@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6646139555190950042}
   - component: {fileID: 7751837502496524095}
   - component: {fileID: 5508175482162230261}
+  - component: {fileID: 8322361169471370009}
   m_Layer: 0
   m_Name: Hat1
   m_TagString: Untagged
@@ -83,3 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8322361169471370009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300540392305857056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f7858737e71254a91e9e897aafcd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField:
+    <Name>k__BackingField: Bucket Hat
+    <Acorns>k__BackingField: 100
+    <ShopSize>k__BackingField: 200
