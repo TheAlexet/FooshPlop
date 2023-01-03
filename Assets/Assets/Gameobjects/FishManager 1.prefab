@@ -44,9 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4570af06814c26f4ea9a7e8fe118947d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishScale: 1
-  spawnDelay: {x: 0.4, y: 0.89}
-  fishArea: {fileID: 0}
-  spawnableFishes:
-  - {fileID: 435967659476087684, guid: bc3f7e881cf7293debd7f5da390ad699, type: 3}
+  SceneData:
+    <FishScale>k__BackingField: 0
+    <SpawnDelay>k__BackingField: {x: 0, y: 0}
+    <FishesInScene>k__BackingField: []
+  <FishArea>k__BackingField: {fileID: 0}
   <FishingHook>k__BackingField: {fileID: 0}
+  canSpawn: 0
+  canDestroy: 0
+  fishCaughtMenu: {fileID: 0}
+  fishCaughtName: {fileID: 0}
+  fishCaughtAcorns: {fileID: 0}
+  caughtSound: {fileID: 0}
+  FishCaughtCanvasPosition: {x: 0, y: 0, z: -11000}
+  FishCaughtCanvasGoUp: {x: 0, y: 600, z: -11400}
+  StartFishCaughtImageAlpha: 0.74
+  DestinationFishCaughtImageAlpha: 0.25

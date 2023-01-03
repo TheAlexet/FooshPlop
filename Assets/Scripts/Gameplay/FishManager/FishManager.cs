@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using GD.MinMaxSlider;
 
 public class FishManager : MonoBehaviour
@@ -26,6 +27,10 @@ public class FishManager : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI fishCaughtName;
     [SerializeField] TMPro.TextMeshProUGUI fishCaughtAcorns;
     [SerializeField] AudioSource caughtSound;
+    public Vector3 FishCaughtCanvasPosition;
+    public Vector3 FishCaughtCanvasGoUp;
+    public float StartFishCaughtImageAlpha;
+    public float DestinationFishCaughtImageAlpha;
 
     public bool isBiting { get; private set; }
     public bool isLeaving { get; private set; }
@@ -47,14 +52,20 @@ public class FishManager : MonoBehaviour
 
     void Update()
     {
-        if(timeSinceFishCaughtMenuActive > 3f)
+        if (timeSinceFishCaughtMenuActive > 3f)
         {
             fishCaughtMenu.SetActive(false);
         }
         else
         {
             timeSinceFishCaughtMenuActive += Time.deltaTime;
-            fishCaughtMenu.transform.localPosition = new Vector3(fishCaughtMenu.transform.localPosition.x, fishCaughtMenu.transform.localPosition.y + 0.5f, fishCaughtMenu.transform.localPosition.z - 0.5f);
+            fishCaughtMenu.transform.localPosition = Vector3.Lerp(fishCaughtMenu.transform.localPosition, FishCaughtCanvasGoUp, Time.deltaTime);
+
+            Color fishCaughtMenuColor = fishCaughtMenu.GetComponent<Image>().color;
+            float newAlpha = Mathf.Lerp(fishCaughtMenuColor.a, DestinationFishCaughtImageAlpha, Time.deltaTime);
+            Color newColor = new Color(fishCaughtMenuColor.r, fishCaughtMenuColor.g, fishCaughtMenuColor.b, newAlpha);
+            fishCaughtMenu.GetComponent<Image>().color = newColor;
+
         }
 
         if (canSpawn && currentFish == null)
@@ -113,8 +124,11 @@ public class FishManager : MonoBehaviour
     {
         caughtSound.Play();
         timeSinceFishCaughtMenuActive = 0f;
-        fishCaughtMenu.transform.localPosition = new Vector3(0f, 100f, -9450f);
+        fishCaughtMenu.transform.localPosition = FishCaughtCanvasPosition;
         fishCaughtMenu.SetActive(true);
+        Color fishCaughtMenuColor = fishCaughtMenu.GetComponent<Image>().color;
+        Color startingColor = new Color(fishCaughtMenuColor.r, fishCaughtMenuColor.g, fishCaughtMenuColor.b, StartFishCaughtImageAlpha);
+        fishCaughtMenu.GetComponent<Image>().color = startingColor;
         fishCaughtName.text = "+ 1 " + GetCurrentFish().Data.FancyName;
         fishCaughtAcorns.text = "+ " + (GetCurrentFish().Data.Rarity * 10).ToString() + " acorns";
     }
