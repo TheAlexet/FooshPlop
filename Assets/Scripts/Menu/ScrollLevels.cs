@@ -22,6 +22,7 @@ public class ScrollLevels : ScrollSystem
         float accessTime = Database.GetAccessTimeArea($"level{closestPosition}");
         if (miniScenesParents.Count != db.LevelsCount)
         {
+            miniScenesParents = new List<Transform>();
             for (int i = 0; i < db.LevelsCount; i++)
             {
                 miniScenesParents.Add(contentHolder.transform.GetChild(i).transform);

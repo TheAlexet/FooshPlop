@@ -5,12 +5,6 @@ public class SceneChange : MonoBehaviour
 {
     public int MenuScenesOffset = 3; // number of scenes before first level
     [SerializeField] private AudioSource buttonSound;
-    private DatabaseAccess db;
-
-    private void Start()
-    {
-        db = GameObject.FindGameObjectWithTag("Database")?.GetComponent<DatabaseAccess>();
-    }
 
     public void ChangeScene(int sceneID)
     {
@@ -20,6 +14,6 @@ public class SceneChange : MonoBehaviour
 
     public void LoadArea(int areaInt)
     {
-        if (db.LevelsTime[areaInt] != 0) { ChangeScene(areaInt + MenuScenesOffset); }
+        if (Database.GetAccessTimeArea($"level{areaInt}") != 0) { ChangeScene(areaInt + MenuScenesOffset); }
     }
 }

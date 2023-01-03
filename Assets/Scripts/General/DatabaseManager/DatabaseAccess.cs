@@ -9,39 +9,35 @@ public class DatabaseAccess : MonoBehaviour
     // Make changes from editor only
     [field: SerializeField] public int Acorns { get; private set; }
     [field: SerializeField] public int LotteryTickets { get; private set; }
-    [field: SerializeField] public int LevelsCount { get; private set; }
-    [field: SerializeField] public List<float> LevelsTime { get; private set; }
+    [field: SerializeField] public int LevelsCount { get; private set; } = 4;
+    [field: SerializeField] public float[] LevelsTime { get; private set; }
 
+    private bool coroutineStarted = false;
 
-    private void Awake()
+    public DatabaseAccess()
     {
-        InitializeLevelsTime();
+        LevelsTime = new float[LevelsCount];
     }
 
     private void Start()
     {
-        StartCoroutine(IUpdateDatabase());
+        if (!coroutineStarted)
+        {
+            coroutineStarted = true;
+            StartCoroutine(IUpdateDatabase());
+        }
     }
 
     private void OnValidate()
     {
-        if (LevelsTime.Count != LevelsCount) { InitializeLevelsTime(); }
-
         Database.setAcorns(Acorns);
         Database.SetLotteryTickets(LotteryTickets);
 
         for (int i = 0; i < LevelsCount; i++)
         {
-            Database.SetAccessTimeArea($"level{i}", LevelsTime[i]);
+            Database.IncrAccessTimeArea($"level{i}", LevelsTime[i]);
+            LevelsTime[i] = 0;
         }
-
-    }
-
-    private void InitializeLevelsTime()
-    {
-        // Create LevelsTime
-        LevelsTime = new List<float>();
-        for (int i = 0; i < LevelsCount; i++) { LevelsTime.Add(Database.GetAccessTimeArea($"level{i}")); }
     }
 
     IEnumerator IUpdateDatabase()
@@ -68,7 +64,7 @@ public class DatabaseAccess : MonoBehaviour
     {
         LotteryTickets = Database.GetLotteryTickets();
     }
-    #endregion 
+    #endregion
 
     #region Access To Area
     public void UpdateAccessTimes()
@@ -76,7 +72,6 @@ public class DatabaseAccess : MonoBehaviour
         for (int i = 0; i < LevelsCount; i++)
         {
             Database.IncrAccessTimeArea($"level{i}", -timeToRefresh);
-            LevelsTime[i] = Database.GetAccessTimeArea($"level{i}");
         }
 
     }
