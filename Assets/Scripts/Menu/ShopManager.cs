@@ -63,6 +63,6 @@ public class ShopManager : MonoBehaviour
 
     void BuyItem()
     {
-
+        // Database.IncrAcorns(itemPrice);
     }
 }
