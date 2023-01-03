@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MenuSwitch : MonoBehaviour
 {
@@ -15,6 +17,16 @@ public class MenuSwitch : MonoBehaviour
     [SerializeField] int prevMenu = 1;
     [SerializeField] int currentMenu = 1;
     [SerializeField] Vector2 defaultButtonScale;
+
+    [SerializeField] private GameObject databaseAccess;
+
+    void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("Database").Length == 0)
+        {
+            DontDestroyOnLoad(GameObject.Instantiate(databaseAccess));
+        }
+    }
 
     void Start()
     {

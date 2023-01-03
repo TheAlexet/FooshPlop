@@ -20,10 +20,8 @@ public class GenerateScrollRowVertical : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI fishRarity;
     [SerializeField] TMPro.TextMeshProUGUI fishAcorns;
     [SerializeField] TMPro.TextMeshProUGUI fishCaught;
-    private DatabaseAccess db;
     [SerializeField] private AudioSource buttonSound;
 
-    private void Awake() { db = new DatabaseAccess(); }
 
     void Start()
     {
@@ -71,9 +69,9 @@ public class GenerateScrollRowVertical : MonoBehaviour
 
     void Update()
     {
-        for(int i = 0; i < fishesButtons.Count; i++)
+        for (int i = 0; i < fishesButtons.Count; i++)
         {
-            if(fishesButtons[i].transform.position.y > 1.6f || fishesButtons[i].transform.position.y < 0.55)
+            if (fishesButtons[i].transform.position.y > 1.6f || fishesButtons[i].transform.position.y < 0.55)
             {
                 fishesButtons[i].SetActive(false);
             }
@@ -91,7 +89,7 @@ public class GenerateScrollRowVertical : MonoBehaviour
         fishName.text = fishData.FancyName;
         fishRarity.text = fishData.Rarity.ToString();
         fishAcorns.text = (fishData.Rarity * 10f).ToString();
-        fishCaught.text = db.getFishCaught(fishData.FancyName).ToString();
+        fishCaught.text = Database.getFishCaught(fishData.FancyName).ToString();
     }
 
     public void CloseFishDataMenu()

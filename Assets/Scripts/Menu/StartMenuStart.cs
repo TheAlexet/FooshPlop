@@ -7,6 +7,14 @@ public class StartMenuStart : MonoBehaviour
 {
     [SerializeField] AudioSource audioStart;
     [SerializeField] List<ParticleSystem> bubbleParticles;
+    public int numLevels; // make it global
+    public GameObject DatabaseAccess;
+
+    void Awake()
+    {
+        UpdatePlayerPrefs();
+        DontDestroyOnLoad(GameObject.Instantiate(DatabaseAccess));
+    }
 
     bool isStarting = false;
     public float delayAfterStart = 3f;
@@ -33,4 +41,16 @@ public class StartMenuStart : MonoBehaviour
             }
         }
     }
+
+    void UpdatePlayerPrefs()
+    {
+        float lastConnection = Database.GetLastConnection();
+        float timeSinceLastConnection = Time.time - lastConnection;
+
+        for (int i = 0; i < numLevels; i++)
+        {
+            Database.IncrAccessTimeArea($"level{i}", -timeSinceLastConnection);
+        }
+    }
+
 }

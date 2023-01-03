@@ -19,7 +19,8 @@ public class StartMenuFishManager : MonoBehaviour
             foreach (GameObject f in fishes) { ones.Add(1.0f); }
             int fishInd = Categorical.Choice(ones);
 
-            fishSpawner.SpawnFish(fishes[fishInd], fishArea);
+            GameObject fish = fishSpawner.SpawnFish(fishes[fishInd], fishArea);
+            fish.GetComponent<FishSM>().enabled = false;
             fishExists = true;
         }
     }
