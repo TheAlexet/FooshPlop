@@ -20,8 +20,8 @@ public class AttemptState : InteractiveState
         if (_gyroRotationRate > 3f)
         {
             _sm.retrieveSound.Play();
-            _sm.db.setAcorns(_sm.db.getAcorns() + _sm.fishManager.GetCurrentFish().Data.Rarity * 10);
-            _sm.db.addFishCaught(_sm.fishManager.GetCurrentFish().Data.FancyName);
+            Database.setAcorns(Database.getAcorns() + _sm.fishManager.GetCurrentFish().Data.Rarity * 10);
+            Database.addFishCaught(_sm.fishManager.GetCurrentFish().Data.FancyName);
             _sm.fishManager.ShowFishCaught();
             _sm.playerAnimator.SetTrigger("Pull");
             _sm.ChangeState(_sm.pullState);

@@ -8,6 +8,7 @@ TagManager:
   - Hook
   - HookInfluence
   - HookVisionField
+  - Database
   layers:
   - Default
   - TransparentFX

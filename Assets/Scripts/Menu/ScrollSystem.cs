@@ -21,10 +21,13 @@ public class ScrollSystem : MonoBehaviour
     private float[] itemPositions;
     public int closestPosition;
 
+    protected DatabaseAccess db;
+
     void Start()
     {
         itemPositions = GetPositions();
         normalScale = contentHolder.transform.GetChild(0).GetChild(0).localScale;
+        db = GameObject.FindGameObjectWithTag("Database")?.GetComponent<DatabaseAccess>();
     }
 
     void Update()
@@ -102,5 +105,10 @@ public class ScrollSystem : MonoBehaviour
                 );
             }
         }
+    }
+
+    public int GetItemsCount()
+    {
+        return itemPositions.Length;
     }
 }
