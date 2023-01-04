@@ -30,8 +30,8 @@ public class DatabaseAccess : MonoBehaviour
 
     private void OnValidate()
     {
-        Database.setAcorns(Acorns);
-        Database.SetLotteryTickets(LotteryTickets);
+        Database.IncrAcorns(Acorns);
+        Database.IncrLotteryTickets(LotteryTickets);
 
         for (int i = 0; i < LevelsCount; i++)
         {
@@ -55,14 +55,14 @@ public class DatabaseAccess : MonoBehaviour
     #region Acorns
     public void UpdateAcorns()
     {
-        Acorns = Database.getAcorns();
+        Acorns = 0;
     }
     #endregion
 
     #region Lottery Tickets
     public void UpdateLotteryTickets()
     {
-        LotteryTickets = Database.GetLotteryTickets();
+        LotteryTickets = 0;
     }
     #endregion
 
