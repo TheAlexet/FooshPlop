@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     public int itemsPerRow = 3;
 
     [SerializeField] List<GameObject> itemsGameObjects;
+    [SerializeField] List<Sprite> itemsSprites;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] GameObject buttonGameObjectEmpty;
     [SerializeField] Transform parent;
@@ -33,6 +34,7 @@ public class ShopManager : MonoBehaviour
                 last_row.GetComponent<HorizontalLayoutGroup>().spacing = last_row.GetComponent<RectTransform>().sizeDelta.x / itemsPerRow / 10f;
             }
             GameObject itemButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
+            itemButton.GetComponent<Button>().image.sprite = itemsSprites[i];
             GameObject item = itemsGameObjects[i];
             GameObject itemObject = GameObject.Instantiate(item, itemButton.transform.GetChild(1).transform);
             itemButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = item.GetComponent<Item>().Data.Name;

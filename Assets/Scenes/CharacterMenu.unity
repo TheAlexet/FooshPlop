@@ -2710,9 +2710,11 @@ MonoBehaviour:
   - {fileID: 746480802324401432, guid: d5cdc101d8003f652b17c4da32d45b37, type: 3}
   - {fileID: 2228214703736170389, guid: c46a1bf085bdcdabe8e1ed7bd11f3144, type: 3}
   - {fileID: 1817564841511334370, guid: 0493054d6c00f4c3d8625159cc1583c8, type: 3}
-  - {fileID: 6746666142562178817, guid: 7225a18e40e490ff9ad280e92f5f81f4, type: 3}
-  - {fileID: 8858338398495708918, guid: 7e74fb145c5e4b034b3e16b8e89f4f9e, type: 3}
-  - {fileID: 4239333319069367302, guid: 2f56a9aae3d23324bb839e5881031f43, type: 3}
+  itemsSprites:
+  - {fileID: 21300000, guid: 14ac60cf0cc9f4632a9cbeac2a4c761f, type: 3}
+  - {fileID: 21300000, guid: a87dbf0e128449db89314dc571e1e91b, type: 3}
+  - {fileID: 21300000, guid: 928c7ef84bc4d209ab3cf9c681600bd2, type: 3}
+  - {fileID: 21300000, guid: 2bc59d532860828efbaaae5380fcdbf6, type: 3}
   buttonGameObject: {fileID: 4083824864610879439, guid: 2721190826521514a84fdb85dac83729,
     type: 3}
   buttonGameObjectEmpty: {fileID: 4083824864610879439, guid: 0c34d58928ac5d04790b5c6f567aa1a9,
