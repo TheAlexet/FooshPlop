@@ -50,14 +50,27 @@ public class ShopManager : MonoBehaviour
                 if (i * 3f + j + 1f <= itemsGameObjects.Count)
                 {
                     Transform grandChild = child.GetChild(j);
-                    grandChild.GetComponent<Button>().onClick.AddListener(delegate { BuyItem(); });
+                    if(Database.getPurchasedItem(grandChild.GetComponent<Item>().Data.Name) == true)
+                    {
+                        grandChild.GetComponent<Image>().color = new Color32(195,195,195,170);
+                    }
+                    else
+                    {
+                        grandChild.GetComponent<Button>().onClick.AddListener(delegate { BuyItem(grandChild.GetComponent<Item>()); });
+                    }
                 }
             }
         }
     }
 
-    void BuyItem()
+    void BuyItem(Item wantedItem)
     {
-        // Database.IncrAcorns(itemPrice);
+        if(Database.getPurchasedItem(wantedItem.Data.Name) == false && Database.getAcorns() >= wantedItem.Data.Acorns)
+        {
+            buttonSound.Play();
+            Database.setPurchasedItem(wantedItem.Data.Name);
+            Database.IncrAcorns(-wantedItem.Data.Acorns);
+            wantedItem.transform.GetComponent<Image>().color = new Color32(195,195,195,170);
+        }
     }
 }

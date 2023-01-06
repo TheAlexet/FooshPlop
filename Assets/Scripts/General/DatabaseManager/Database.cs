@@ -40,6 +40,23 @@ public static class Database
         PlayerPrefs.SetInt(fishName, getFishCaught(fishName) + 1);
     }
 
+    public static bool getPurchasedItem(string itemName)
+    {
+        if(PlayerPrefs.GetInt(itemName, 0) == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public static void setPurchasedItem(string itemName)
+    {
+        PlayerPrefs.SetInt(itemName, 1);
+    }
+
     #region Lottery Tickets
     public static void SetLotteryTickets(int tickets) { PlayerPrefs.SetInt("lotteryTickets", tickets); }
     public static int GetLotteryTickets() { return PlayerPrefs.GetInt("lotteryTickets"); }
