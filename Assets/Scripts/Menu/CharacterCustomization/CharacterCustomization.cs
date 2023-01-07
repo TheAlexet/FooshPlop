@@ -29,6 +29,7 @@ public class CharacterCustomization : MonoBehaviour
         Hats = CustomizationSO.CustomizationData.Hats;
         Slips = CustomizationSO.CustomizationData.Slips;
 
+
         currentRodIndex = Database.GetCurrentRodIndex();
         currentHatIndex = Database.GetCurrentHatIndex();
         currentSlipIndex = Database.GetCurrentSlipIndex();
@@ -53,26 +54,48 @@ public class CharacterCustomization : MonoBehaviour
 
     public void NextRod()
     {
-        Destroy(currentRod);
-        currentRodIndex = (currentRodIndex + 1) % Rods.Count;
-        Database.SetCurrentRodIndex(currentRodIndex);
-        SpawnRod();
-        buttonSound.Play();
+        int initialRodIndex = currentRodIndex;
+        for(currentRodIndex = (currentRodIndex + 1) % Rods.Count; currentRodIndex != initialRodIndex; currentRodIndex = (currentRodIndex + 1) % Rods.Count)
+        {
+            if(currentRodIndex == 0 || Database.getPurchasedItem(Rods[currentRodIndex].transform.GetComponent<Item>().Data.Name) == true)
+            {
+                Destroy(currentRod);
+                Database.SetCurrentRodIndex(currentRodIndex);
+                SpawnRod();
+                buttonSound.Play();
+                break;
+            }
+        }
     }
     public void NextHat()
     {
-        Destroy(currentHat);
-        currentHatIndex = (currentHatIndex + 1) % Hats.Count;
-        Database.SetCurrentHatIndex(currentHatIndex);
-        SpawnHat();
-        buttonSound.Play();
+        int initialHatIndex = currentHatIndex;
+        for(currentHatIndex = (currentHatIndex + 1) % Hats.Count; currentHatIndex != initialHatIndex; currentHatIndex = (currentHatIndex + 1) % Hats.Count)
+        {
+            if(currentHatIndex == 0 || Database.getPurchasedItem(Hats[currentHatIndex].transform.GetComponent<Item>().Data.Name) == true)
+            {
+                Destroy(currentHat);
+                Database.SetCurrentHatIndex(currentHatIndex);
+                SpawnHat();
+                buttonSound.Play();
+                break;
+            }
+        }
     }
     public void NextSlip()
     {
-        currentSlipIndex = (currentSlipIndex + 1) % Slips.Count;
-        Database.SetCurrentSlipIndex(currentSlipIndex);
-        ApplySlip();
-        buttonSound.Play();
+        int initialSlipIndex = currentSlipIndex;
+        for(currentSlipIndex = (currentSlipIndex + 1) % Slips.Count; currentSlipIndex != initialSlipIndex; currentSlipIndex = (currentSlipIndex + 1) % Slips.Count)
+        {
+            if(currentSlipIndex == 0 || Database.getPurchasedItem(Slips[currentSlipIndex].name) == true)
+            {      
+                Database.SetCurrentSlipIndex(currentSlipIndex);
+                ApplySlip();
+                buttonSound.Play();
+                break;
+            }
+        }
+
     }
 
     private Material[] MatArray()

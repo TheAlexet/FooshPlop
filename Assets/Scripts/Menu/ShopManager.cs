@@ -9,8 +9,6 @@ public class ShopManager : MonoBehaviour
     public int itemsPerRow = 3;
 
     [SerializeField] List<GameObject> itemsGameObjects;
-    [SerializeField] List<Sprite> itemsSprites;
-    [SerializeField] GameObject buttonGameObject;
     [SerializeField] GameObject buttonGameObjectEmpty;
     [SerializeField] Transform parent;
     GameObject last_row;
@@ -33,14 +31,9 @@ public class ShopManager : MonoBehaviour
                 );
                 last_row.GetComponent<HorizontalLayoutGroup>().spacing = last_row.GetComponent<RectTransform>().sizeDelta.x / itemsPerRow / 10f;
             }
-            GameObject itemButton = GameObject.Instantiate(buttonGameObject, last_row.transform);
-            itemButton.GetComponent<Button>().image.sprite = itemsSprites[i];
             GameObject item = itemsGameObjects[i];
-            GameObject itemObject = GameObject.Instantiate(item, itemButton.transform.GetChild(1).transform);
+            GameObject itemButton = GameObject.Instantiate(item, last_row.transform);
             itemButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = item.GetComponent<Item>().Data.Name;
-            float shopSize = item.GetComponent<Item>().Data.ShopSize;
-            itemObject.transform.localScale = new Vector3(shopSize, shopSize, shopSize);
-            //itemObject.transform.localRotation = Quaternion.Euler(0, 180, 0);
             itemButton.transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>().text = item.GetComponent<Item>().Data.Acorns.ToString();
         }
 
@@ -57,14 +50,27 @@ public class ShopManager : MonoBehaviour
                 if (i * 3f + j + 1f <= itemsGameObjects.Count)
                 {
                     Transform grandChild = child.GetChild(j);
-                    grandChild.GetComponent<Button>().onClick.AddListener(delegate { BuyItem(); });
+                    if(Database.getPurchasedItem(grandChild.GetComponent<Item>().Data.Name) == true)
+                    {
+                        grandChild.GetComponent<Image>().color = new Color32(195,195,195,170);
+                    }
+                    else
+                    {
+                        grandChild.GetComponent<Button>().onClick.AddListener(delegate { BuyItem(grandChild.GetComponent<Item>()); });
+                    }
                 }
             }
         }
     }
 
-    void BuyItem()
+    void BuyItem(Item wantedItem)
     {
-        // Database.IncrAcorns(itemPrice);
+        if(Database.getPurchasedItem(wantedItem.Data.Name) == false && Database.getAcorns() >= wantedItem.Data.Acorns)
+        {
+            buttonSound.Play();
+            Database.setPurchasedItem(wantedItem.Data.Name);
+            Database.IncrAcorns(-wantedItem.Data.Acorns);
+            wantedItem.transform.GetComponent<Image>().color = new Color32(195,195,195,170);
+        }
     }
 }

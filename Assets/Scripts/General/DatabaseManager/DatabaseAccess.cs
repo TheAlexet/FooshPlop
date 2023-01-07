@@ -30,7 +30,7 @@ public class DatabaseAccess : MonoBehaviour
 
     private void OnValidate()
     {
-        Database.IncrAcorns(Acorns);
+        //Database.IncrAcorns(Acorns);
         Database.IncrLotteryTickets(LotteryTickets);
 
         for (int i = 0; i < LevelsCount; i++)
