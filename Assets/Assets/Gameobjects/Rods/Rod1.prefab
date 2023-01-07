@@ -143,8 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Data>k__BackingField:
     <Name>k__BackingField: Blue Rod
-    <Acorns>k__BackingField: 200
-    <ShopSize>k__BackingField: 10
+    <Acorns>k__BackingField: 0
 --- !u!1 &7194706378128417872
 GameObject:
   m_ObjectHideFlags: 0

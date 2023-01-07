@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField:
-    <Name>k__BackingField: Bucket
+    <Name>k__BackingField: Bucket Hat
     <Acorns>k__BackingField: 100
 --- !u!1 &4694442719955987868
 GameObject:

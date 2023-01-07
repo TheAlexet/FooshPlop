@@ -18,13 +18,15 @@ MonoBehaviour:
     - {fileID: 8858338398495708918, guid: 7e74fb145c5e4b034b3e16b8e89f4f9e, type: 3}
     - {fileID: 4239333319069367302, guid: 2f56a9aae3d23324bb839e5881031f43, type: 3}
     <Hats>k__BackingField:
+    - {fileID: 6300540392305857056, guid: 69e429bedd07b6e4f80970894a11bd3b, type: 3}
     - {fileID: 6300540392305857056, guid: e1e03c339ccddd9fe9623e4b6989c7ff, type: 3}
     - {fileID: 746480802324401432, guid: d5cdc101d8003f652b17c4da32d45b37, type: 3}
     - {fileID: 2228214703736170389, guid: c46a1bf085bdcdabe8e1ed7bd11f3144, type: 3}
     - {fileID: 1817564841511334370, guid: 0493054d6c00f4c3d8625159cc1583c8, type: 3}
     <Slips>k__BackingField:
-    - {fileID: 2100000, guid: faa6a76a68e26c4548f322dcbb5f0723, type: 2}
+    - {fileID: 2100000, guid: eef2bde0970a3d3428f8dfed213ada32, type: 2}
     - {fileID: 2100000, guid: 1f040d7d6253f4ca6bc54c38a2fa0b67, type: 2}
     - {fileID: 2100000, guid: e5b1e4fadbe39afc788911b8f0a67b2f, type: 2}
+    - {fileID: 2100000, guid: faa6a76a68e26c4548f322dcbb5f0723, type: 2}
     <Skin>k__BackingField: {fileID: 2100000, guid: a74df0adf0e70c7edb42e271f260649e,
       type: 2}
