@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8386506276323663298}
   - component: {fileID: 4885561802476491367}
   - component: {fileID: 7217572397787178669}
+  - component: {fileID: 3082414715247679070}
   m_Layer: 0
   m_Name: Hat5
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3082414715247679070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162867744996804472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f7858737e71254a91e9e897aafcd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField:
+    <Name>k__BackingField: Mohawk
+    <Acorns>k__BackingField: 500
