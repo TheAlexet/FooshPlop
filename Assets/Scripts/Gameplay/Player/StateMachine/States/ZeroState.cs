@@ -25,6 +25,12 @@ public class ZeroState : InteractiveState
         {
             _sm.tutorialMenu.SetActive(true);
         }
+
+        if(Database.isFirstGame())
+        {
+            _sm.tutorialMenu.SetActive(true);
+            Database.setFirstGame();
+        }
     }
 
 }
