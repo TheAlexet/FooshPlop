@@ -14,6 +14,7 @@ public class FishingSM : StateMachine
     public FishManager fishManager;
     public AudioSource throwSound;
     public AudioSource retrieveSound;
+    public GameObject tutorialMenu; 
 
     private void Awake()
     {

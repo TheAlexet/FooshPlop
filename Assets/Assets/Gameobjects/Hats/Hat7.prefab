@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 37579964579711257}
   - component: {fileID: 3975087830123480764}
   - component: {fileID: 1211096785014878838}
+  - component: {fileID: 5910240915498022852}
   m_Layer: 0
   m_Name: Hat7
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5910240915498022852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850708002586645411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f7858737e71254a91e9e897aafcd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField:
+    <Name>k__BackingField: Eskimo Hat
+    <Acorns>k__BackingField: 700

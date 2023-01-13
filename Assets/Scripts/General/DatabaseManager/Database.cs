@@ -57,6 +57,23 @@ public static class Database
         PlayerPrefs.SetInt(itemName, 1);
     }
 
+    public static bool isFirstGame()
+    {
+        if(PlayerPrefs.GetInt("firstGame", 0) == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static void setFirstGame()
+    {
+        PlayerPrefs.SetInt("firstGame", 1);
+    }
+
     #region Lottery Tickets
     public static void SetLotteryTickets(int tickets) { PlayerPrefs.SetInt("lotteryTickets", tickets); }
     public static int GetLotteryTickets() { return PlayerPrefs.GetInt("lotteryTickets"); }
