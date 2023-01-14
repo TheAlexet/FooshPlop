@@ -23,6 +23,7 @@ public class DatabaseAccess : MonoBehaviour
 
     private void Start()
     {
+        Database.SetAccessTimeArea("level0", -1);
         if (!coroutineStarted)
         {
             coroutineStarted = true;
