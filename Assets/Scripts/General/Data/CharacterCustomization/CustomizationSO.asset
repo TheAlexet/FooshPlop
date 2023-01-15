@@ -17,6 +17,8 @@ MonoBehaviour:
     - {fileID: 6746666142562178817, guid: 7225a18e40e490ff9ad280e92f5f81f4, type: 3}
     - {fileID: 8858338398495708918, guid: 7e74fb145c5e4b034b3e16b8e89f4f9e, type: 3}
     - {fileID: 4239333319069367302, guid: 2f56a9aae3d23324bb839e5881031f43, type: 3}
+    - {fileID: 4239333319069367302, guid: 1b7fb55cd3905e11eb4dd0caa75da28d, type: 3}
+    - {fileID: 4239333319069367302, guid: 5e7384de27ee553ae9c0b848ebf314df, type: 3}
     <Hats>k__BackingField:
     - {fileID: 6300540392305857056, guid: 69e429bedd07b6e4f80970894a11bd3b, type: 3}
     - {fileID: 6300540392305857056, guid: e1e03c339ccddd9fe9623e4b6989c7ff, type: 3}
