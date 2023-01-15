@@ -56,7 +56,7 @@ MonoBehaviour:
   fishCaughtName: {fileID: 0}
   fishCaughtAcorns: {fileID: 0}
   caughtSound: {fileID: 0}
-  FishCaughtCanvasPosition: {x: 0, y: 0, z: -11000}
-  FishCaughtCanvasGoUp: {x: 0, y: 600, z: -11400}
+  FishCaughtCanvasPosition: {x: 0, y: 0, z: 0}
+  FishCaughtCanvasGoUp: {x: 0, y: 600, z: 0}
   StartFishCaughtImageAlpha: 0.74
   DestinationFishCaughtImageAlpha: 0.25
