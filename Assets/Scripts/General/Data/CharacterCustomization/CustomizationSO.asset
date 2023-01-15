@@ -31,5 +31,8 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 1f040d7d6253f4ca6bc54c38a2fa0b67, type: 2}
     - {fileID: 2100000, guid: e5b1e4fadbe39afc788911b8f0a67b2f, type: 2}
     - {fileID: 2100000, guid: faa6a76a68e26c4548f322dcbb5f0723, type: 2}
+    - {fileID: 2100000, guid: 8b671171c7d1898659f7a04de07ad241, type: 2}
+    - {fileID: 2100000, guid: 785744110d6fd1083b9ae2d000c9eebe, type: 2}
+    - {fileID: 2100000, guid: 4762d7a102a98698db7f09d6dbdf9548, type: 2}
     <Skin>k__BackingField: {fileID: 2100000, guid: a74df0adf0e70c7edb42e271f260649e,
       type: 2}
