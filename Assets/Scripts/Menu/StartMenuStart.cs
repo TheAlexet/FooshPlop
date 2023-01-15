@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class StartMenuStart : MonoBehaviour
 {
@@ -44,8 +45,8 @@ public class StartMenuStart : MonoBehaviour
 
     void UpdatePlayerPrefs()
     {
-        float lastConnection = Database.GetLastConnection();
-        float timeSinceLastConnection = Time.time - lastConnection;
+        int lastConnection = Database.GetLastConnection();
+        int timeSinceLastConnection = (int)DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds - lastConnection;
 
         for (int i = 0; i < numLevels; i++)
         {
