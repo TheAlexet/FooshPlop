@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DatabaseAccess : MonoBehaviour
 {
@@ -85,7 +86,7 @@ public class DatabaseAccess : MonoBehaviour
     #region Keep Track of Time
     public void UpdateTimeSinceStarted()
     {
-        Database.SetLastConnection(Time.time);
+        Database.SetLastConnection((int)DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds);
     }
     #endregion
 }

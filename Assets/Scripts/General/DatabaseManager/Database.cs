@@ -42,7 +42,7 @@ public static class Database
 
     public static bool getPurchasedItem(string itemName)
     {
-        if(PlayerPrefs.GetInt(itemName, 0) == 0)
+        if (PlayerPrefs.GetInt(itemName, 0) == 0)
         {
             return false;
         }
@@ -59,7 +59,7 @@ public static class Database
 
     public static bool isFirstGame()
     {
-        if(PlayerPrefs.GetInt("firstGame", 0) == 0)
+        if (PlayerPrefs.GetInt("firstGame", 0) == 0)
         {
             return true;
         }
@@ -111,12 +111,12 @@ public static class Database
     }
     #endregion
 
-    public static void SetLastConnection(float time)
+    public static void SetLastConnection(int time)
     {
-        PlayerPrefs.SetFloat("lastConnection", time);
+        PlayerPrefs.SetInt("lastConnection", time);
     }
-    public static float GetLastConnection()
+    public static int GetLastConnection()
     {
-        return PlayerPrefs.GetFloat("lastConnection");
+        return PlayerPrefs.GetInt("lastConnection");
     }
 }
