@@ -7,7 +7,7 @@ public class Fish : MonoBehaviour
     [field: SerializeField] public FishData Data { get; private set; }
     [SerializeField] private bool useNewBones;
 
-    private void Awake()
+    private void OnEnable()
     {
         GetComponent<Animator>().SetBool("isNewBones", useNewBones);
     }

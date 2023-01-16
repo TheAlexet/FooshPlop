@@ -22,6 +22,8 @@ public class GenerateScrollRowVertical : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI fishCaught;
     [SerializeField] private AudioSource buttonSound;
 
+    [SerializeField] private Vector3 itemRotationInMenu;
+
 
     void Start()
     {
@@ -43,6 +45,8 @@ public class GenerateScrollRowVertical : MonoBehaviour
             GameObject fish = fishesGameObjects[i];
             GameObject fishOject = GameObject.Instantiate(fish, fishButton.transform.GetChild(0));
             fishOject.transform.localScale /= (itemsPerRow - 1);
+            fishOject.transform.localEulerAngles = itemRotationInMenu;
+            fishOject.transform.localPosition += fishOject.GetComponent<Fish>().Data.Offset;
             Destroy(fishOject.GetComponent<FishSM>());
             fishesButtons.Add(fishButton);
         }

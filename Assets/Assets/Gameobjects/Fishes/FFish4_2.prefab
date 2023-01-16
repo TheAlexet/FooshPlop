@@ -95,6 +95,7 @@ MonoBehaviour:
     <CatchBeforeDelay>k__BackingField: {x: 0.5, y: 1}
     <TranslateSpeed>k__BackingField: 2
     <RotateSpeed>k__BackingField: 150
+    <Offset>k__BackingField: {x: 1, y: 0, z: -0.25}
   useNewBones: 1
 --- !u!1 &6224952298523569302
 GameObject:
