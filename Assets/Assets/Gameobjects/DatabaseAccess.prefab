@@ -45,5 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToRefresh: 5
-  <Acorns>k__BackingField: 100
-  <LevelsCount>k__BackingField: 4
+  <Acorns>k__BackingField: 0
+  <LotteryTickets>k__BackingField: 0
+  <LevelsCount>k__BackingField: 5
+  <LevelsTime>k__BackingField:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  ResetPlayerPrefs: 0
