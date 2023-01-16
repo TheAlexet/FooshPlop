@@ -51,9 +51,9 @@ public class Lottery : MonoBehaviour
             Database.IncrLotteryTickets(-LotteryPrice);
 
             int res = GetReward();
-            DisplayPopUp("New Area Pass !", $"{areaPasses[res].passName}");
+            DisplayPopUp("New Area Pass !", $"{areaPasses[res].PassName}");
             pullPass.UpdateAccessTimes(areaPasses[res]);
-            lotteryText.text = $"You got {areaPasses[res].passName}";
+            lotteryText.text = $"You got {areaPasses[res].PassName}";
         }
         else { lotteryText.text = "Not enough tickets :/"; }
 
@@ -62,7 +62,7 @@ public class Lottery : MonoBehaviour
     public int GetReward()
     {
         List<float> logits = new List<float>();
-        foreach (AreaPassSO pass in areaPasses) { logits.Add(pass.rarity); }
+        foreach (AreaPassSO pass in areaPasses) { logits.Add(pass.SpawnRate); }
 
         int res = Categorical.Choice(logits);
         return res;

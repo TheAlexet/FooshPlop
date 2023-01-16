@@ -10,9 +10,9 @@ public class PullAreaAccessTime
 
     public void UpdateAccessTimes(AreaPassSO accessPass)
     {
-        foreach (int areaInt in accessPass.areasUnlocked)
+        foreach (int areaInt in accessPass.AreasUnlocked)
         {
-            Database.IncrAccessTimeArea($"level{areaInt}", (int)accessPass.validityTime);
+            Database.IncrAccessTimeArea($"level{areaInt}", (int)accessPass.ValidityTime);
         }
     }
 }

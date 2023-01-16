@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e245d6f214e5164b28d8da3b2b5b84c0, type: 3}
-  m_Name: level1_1h
+  m_Name: level5_30m
   m_EditorClassIdentifier: 
-  <passName>k__BackingField: Level 2 - Pass 1h
-  <validityTime>k__BackingField: 3600
-  <areasUnlocked>k__BackingField: 01000000
-  <rarity>k__BackingField: 10
+  <PassName>k__BackingField: Level 5 - 30min
+  <ValidityTime>k__BackingField: 1800
+  <AreasUnlocked>k__BackingField: 04000000
+  <SpawnRate>k__BackingField: 20
