@@ -105,7 +105,7 @@ public static class Database
             PlayerPrefs.SetInt(areaName, Mathf.Max(0, currentTime + accessTime));
         }
     }
-    public static float GetAccessTimeArea(string areaName)
+    public static int GetAccessTimeArea(string areaName)
     {
         return PlayerPrefs.GetInt(areaName);
     }

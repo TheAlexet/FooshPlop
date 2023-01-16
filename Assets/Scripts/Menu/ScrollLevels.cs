@@ -19,7 +19,7 @@ public class ScrollLevels : ScrollSystem
 
     private string GetFormatTimeText()
     {
-        float accessTime = Database.GetAccessTimeArea($"level{closestPosition}");
+        int accessTime = Database.GetAccessTimeArea($"level{closestPosition}");
         if (miniScenesParents.Count != db.LevelsCount)
         {
             miniScenesParents = new List<Transform>();
@@ -36,11 +36,10 @@ public class ScrollLevels : ScrollSystem
             return "Locked :/";
         }
         ChangeColors(closestPosition, true);
-        if (accessTime < 60) { return $"{(int)accessTime} s"; }
-        if (accessTime < 3600) { return $"{(int)accessTime / 60} min"; }
-        if (accessTime < 86400) { return $"{(int)accessTime / 60 / 60} h"; }
-
-        return $"{(int)accessTime / 60 / 60 / 60} days";
+        if (accessTime < 60) { return $"{accessTime} s"; }
+        if (accessTime < 3600) { return $"{accessTime / 60} min"; }
+        if (accessTime < 86400) { return $"{accessTime / (60 * 60)} h"; }
+        return $"{accessTime / (60 * 60 * 24)} days";
     }
 
     private void ChangeColors(int sceneInt, bool isUnlocked)
