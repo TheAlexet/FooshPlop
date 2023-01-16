@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField:
-    <Name>k__BackingField: Black Rod
-    <Acorns>k__BackingField: 600
+    <Name>k__BackingField: Red Rod
+    <Acorns>k__BackingField: 800
 --- !u!1 &4239333319268915620
 GameObject:
   m_ObjectHideFlags: 0

@@ -65,7 +65,13 @@ public class ShopManager : MonoBehaviour
 
     void BuyItem(Item wantedItem)
     {
-        if(Database.getPurchasedItem(wantedItem.Data.Name) == false && Database.getAcorns() >= wantedItem.Data.Acorns)
+        if(wantedItem.Data.Name == "Ticket" && Database.getAcorns() >= wantedItem.Data.Acorns)
+        {
+            buttonSound.Play();
+            Database.IncrLotteryTickets(1);
+            Database.IncrAcorns(-wantedItem.Data.Acorns);
+        }
+        else if(Database.getPurchasedItem(wantedItem.Data.Name) == false && Database.getAcorns() >= wantedItem.Data.Acorns)
         {
             buttonSound.Play();
             Database.setPurchasedItem(wantedItem.Data.Name);

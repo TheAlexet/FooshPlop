@@ -11,6 +11,7 @@ public class ZeroState : InteractiveState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        timer += Time.deltaTime;
         // . transition to "Cast" state if input < -3
         if (_gyroRotationRate < -3f)
         {
@@ -19,14 +20,11 @@ public class ZeroState : InteractiveState
             _sm.playerAnimator.SetTrigger("Cast");
             stateMachine.ChangeState(_sm.castState);
         }
-
-        timer += Time.deltaTime;
-        if(timer >= 10)
+        else if(timer >= 10)
         {
             _sm.tutorialMenu.SetActive(true);
         }
-
-        if(Database.isFirstGame())
+        else if(Database.isFirstGame())
         {
             _sm.tutorialMenu.SetActive(true);
             Database.setFirstGame();
