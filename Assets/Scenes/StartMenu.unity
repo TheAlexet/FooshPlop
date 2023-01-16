@@ -816,7 +816,7 @@ MonoBehaviour:
   - {fileID: 1770137152}
   - {fileID: 1351423537}
   - {fileID: 701726248}
-  numLevels: 0
+  numLevels: 5
   DatabaseAccess: {fileID: 3102412940811450706, guid: c30f3de62fdef960fb2d3eb22df388c1,
     type: 3}
   delayAfterStart: 3

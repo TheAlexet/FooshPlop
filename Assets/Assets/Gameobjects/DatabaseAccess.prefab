@@ -44,14 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f4d5958ed4a42c39507a64d811dab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToRefresh: 5
+  timeToRefresh: 1
   <Acorns>k__BackingField: 0
   <LotteryTickets>k__BackingField: 0
   <LevelsCount>k__BackingField: 5
-  <LevelsTime>k__BackingField:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  <LevelsTime>k__BackingField: 0000000000000000000000000000000000000000
   ResetPlayerPrefs: 0
