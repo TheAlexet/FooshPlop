@@ -16,4 +16,7 @@ public class FishData
     [field: SerializeField][field: MinMaxSlider(0f, 10f)] public Vector2 CatchBeforeDelay { get; private set; }
     [field: SerializeField] public float TranslateSpeed { get; private set; }
     [field: SerializeField] public float RotateSpeed { get; private set; }
+
+    [field: Header("Fish in Pokedex")]
+    [field: SerializeField] public Vector3 Offset { get; private set; }
 }
