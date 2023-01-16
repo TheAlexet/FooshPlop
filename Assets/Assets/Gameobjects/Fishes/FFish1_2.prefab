@@ -90,11 +90,12 @@ MonoBehaviour:
     <FishName>k__BackingField: Fish1_2
     <Rarity>k__BackingField: 1
     <SpawnRate>k__BackingField: 50
-    <FancyName>k__BackingField: Roger
+    <FancyName>k__BackingField: Dark Purple Fish
     <ChangeDestinationDelay>k__BackingField: {x: 2, y: 3}
     <CatchBeforeDelay>k__BackingField: {x: 3, y: 4}
     <TranslateSpeed>k__BackingField: 1
     <RotateSpeed>k__BackingField: 100
+  useNewBones: 0
 --- !u!1 &6224952298523569302
 GameObject:
   m_ObjectHideFlags: 0

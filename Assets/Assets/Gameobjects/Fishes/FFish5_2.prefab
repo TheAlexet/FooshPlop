@@ -87,12 +87,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField:
-    <FishName>k__BackingField: Fish1_1
-    <Rarity>k__BackingField: 1
-    <SpawnRate>k__BackingField: 50
-    <FancyName>k__BackingField: Bob
-    <ChangeDestinationDelay>k__BackingField: {x: 2, y: 3}
-    <CatchBeforeDelay>k__BackingField: {x: 3, y: 4}
+    <FishName>k__BackingField: Fish5_2
+    <Rarity>k__BackingField: 5
+    <SpawnRate>k__BackingField: 10
+    <FancyName>k__BackingField: Black Manta
+    <ChangeDestinationDelay>k__BackingField: {x: 2.5, y: 3.5}
+    <CatchBeforeDelay>k__BackingField: {x: 1, y: 2}
     <TranslateSpeed>k__BackingField: 0.5
     <RotateSpeed>k__BackingField: 80
   useNewBones: 1

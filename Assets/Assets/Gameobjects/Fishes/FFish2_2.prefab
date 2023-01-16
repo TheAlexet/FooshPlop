@@ -89,12 +89,13 @@ MonoBehaviour:
   <Data>k__BackingField:
     <FishName>k__BackingField: Fish2_2
     <Rarity>k__BackingField: 2
-    <SpawnRate>k__BackingField: 40
-    <FancyName>k__BackingField: Karim
-    <ChangeDestinationDelay>k__BackingField: {x: 2, y: 3}
+    <SpawnRate>k__BackingField: 45
+    <FancyName>k__BackingField: Spotted Koi
+    <ChangeDestinationDelay>k__BackingField: {x: 2.5, y: 3.5}
     <CatchBeforeDelay>k__BackingField: {x: 2.5, y: 3.5}
     <TranslateSpeed>k__BackingField: 1
     <RotateSpeed>k__BackingField: 100
+  useNewBones: 0
 --- !u!1 &6224952298523569302
 GameObject:
   m_ObjectHideFlags: 0

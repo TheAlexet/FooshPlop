@@ -90,11 +90,12 @@ MonoBehaviour:
     <FishName>k__BackingField: Fish3_1
     <Rarity>k__BackingField: 1
     <SpawnRate>k__BackingField: 50
-    <FancyName>k__BackingField: "Val\xE9rie"
+    <FancyName>k__BackingField: Purple Reindeer
     <ChangeDestinationDelay>k__BackingField: {x: 2, y: 3}
     <CatchBeforeDelay>k__BackingField: {x: 1, y: 1.5}
     <TranslateSpeed>k__BackingField: 1
     <RotateSpeed>k__BackingField: 100
+  useNewBones: 0
 --- !u!1 &6224952298523569302
 GameObject:
   m_ObjectHideFlags: 0

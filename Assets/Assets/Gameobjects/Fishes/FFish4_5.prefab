@@ -87,13 +87,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField:
-    <FishName>k__BackingField: Fish1_1
-    <Rarity>k__BackingField: 1
-    <SpawnRate>k__BackingField: 50
-    <FancyName>k__BackingField: Bob
+    <FishName>k__BackingField: Fish4_5
+    <Rarity>k__BackingField: 4
+    <SpawnRate>k__BackingField: 20
+    <FancyName>k__BackingField: Orange Moon
     <ChangeDestinationDelay>k__BackingField: {x: 2, y: 3}
     <CatchBeforeDelay>k__BackingField: {x: 3, y: 4}
-    <TranslateSpeed>k__BackingField: 1
+    <TranslateSpeed>k__BackingField: 0.8
     <RotateSpeed>k__BackingField: 100
   useNewBones: 1
 --- !u!1 &6224952298523569302
