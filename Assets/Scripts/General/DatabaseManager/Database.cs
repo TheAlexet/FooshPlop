@@ -93,21 +93,21 @@ public static class Database
     #endregion
 
     #region Access Time Area
-    public static void SetAccessTimeArea(string areaName, float accessTime)
+    public static void SetAccessTimeArea(string areaName, int accessTime)
     {
-        PlayerPrefs.SetFloat(areaName, accessTime);
+        PlayerPrefs.SetInt(areaName, accessTime);
     }
-    public static void IncrAccessTimeArea(string areaName, float accessTime)
+    public static void IncrAccessTimeArea(string areaName, int accessTime)
     {
-        float currentTime = PlayerPrefs.GetFloat(areaName);
+        int currentTime = PlayerPrefs.GetInt(areaName);
         if (currentTime >= 0f)
         {
-            PlayerPrefs.SetFloat(areaName, Mathf.Max(0f, currentTime + accessTime));
+            PlayerPrefs.SetInt(areaName, Mathf.Max(0, currentTime + accessTime));
         }
     }
     public static float GetAccessTimeArea(string areaName)
     {
-        return PlayerPrefs.GetFloat(areaName);
+        return PlayerPrefs.GetInt(areaName);
     }
     #endregion
 

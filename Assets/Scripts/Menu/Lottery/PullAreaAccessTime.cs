@@ -12,7 +12,7 @@ public class PullAreaAccessTime
     {
         foreach (int areaInt in accessPass.areasUnlocked)
         {
-            Database.IncrAccessTimeArea($"level{areaInt}", accessPass.validityTime);
+            Database.IncrAccessTimeArea($"level{areaInt}", (int)accessPass.validityTime);
         }
     }
 }

@@ -11,7 +11,7 @@ public class DatabaseAccess : MonoBehaviour
     [field: SerializeField] public int Acorns { get; private set; }
     [field: SerializeField] public int LotteryTickets { get; private set; }
     [field: SerializeField] public int LevelsCount { get; private set; } = 5;
-    [field: SerializeField] public float[] LevelsTime { get; private set; }
+    [field: SerializeField] public int[] LevelsTime { get; private set; }
 
     [SerializeField] private bool ResetPlayerPrefs;
 
@@ -19,12 +19,13 @@ public class DatabaseAccess : MonoBehaviour
 
     public DatabaseAccess()
     {
-        LevelsTime = new float[LevelsCount];
+        LevelsTime = new int[LevelsCount];
     }
 
     private void Start()
     {
         Database.SetAccessTimeArea("level0", -1);
+
         if (!coroutineStarted)
         {
             coroutineStarted = true;
@@ -34,7 +35,7 @@ public class DatabaseAccess : MonoBehaviour
 
     private void OnValidate()
     {
-        // Database.IncrAcorns(Acorns);
+        Database.IncrAcorns(Acorns);
         Database.IncrLotteryTickets(LotteryTickets);
 
         for (int i = 0; i < LevelsCount; i++)
@@ -77,7 +78,7 @@ public class DatabaseAccess : MonoBehaviour
     {
         for (int i = 0; i < LevelsCount; i++)
         {
-            Database.IncrAccessTimeArea($"level{i}", -timeToRefresh);
+            Database.IncrAccessTimeArea($"level{i}", -(int)timeToRefresh);
         }
 
     }

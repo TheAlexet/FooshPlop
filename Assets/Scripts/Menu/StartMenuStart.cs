@@ -47,6 +47,7 @@ public class StartMenuStart : MonoBehaviour
     {
         int lastConnection = Database.GetLastConnection();
         int timeSinceLastConnection = (int)DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds - lastConnection;
+        Debug.Log(timeSinceLastConnection);
 
         for (int i = 0; i < numLevels; i++)
         {
