@@ -8,13 +8,12 @@ public class StartMenuStart : MonoBehaviour
 {
     [SerializeField] AudioSource audioStart;
     [SerializeField] List<ParticleSystem> bubbleParticles;
-    public int numLevels; // make it global
     public GameObject DatabaseAccess;
 
     void Awake()
     {
-        UpdatePlayerPrefs();
         DontDestroyOnLoad(GameObject.Instantiate(DatabaseAccess));
+        UpdatePlayerPrefs();
     }
 
     bool isStarting = false;
@@ -48,9 +47,10 @@ public class StartMenuStart : MonoBehaviour
         int lastConnection = Database.GetLastConnection();
         int timeSinceLastConnection = (int)DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds - lastConnection;
 
-        for (int i = 0; i < numLevels; i++)
+        for (int i = 1; i < DatabaseAccess.GetComponent<DatabaseAccess>().LevelsCount; i++)
         {
             Database.IncrAccessTimeArea($"level{i}", -timeSinceLastConnection);
+            Debug.Log(Database.GetAccessTimeArea($"level{i}"));
         }
     }
 

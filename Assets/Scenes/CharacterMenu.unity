@@ -4192,7 +4192,7 @@ GameObject:
   - component: {fileID: 7447124673091938537}
   - component: {fileID: 7447124673091938538}
   - component: {fileID: 7447124673091938539}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: PopUpAcorns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4270,7 +4270,7 @@ GameObject:
   - component: {fileID: 7447124673467303319}
   - component: {fileID: 7447124673467303317}
   - component: {fileID: 7447124673467303318}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: PopUpMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4308,7 +4308,7 @@ GameObject:
   - component: {fileID: 7447124673477451440}
   - component: {fileID: 7447124673477451471}
   - component: {fileID: 7447124673477451470}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: PopUpName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4484,7 +4484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7447124675030520102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -4506,7 +4506,7 @@ GameObject:
   - component: {fileID: 7447124675030520099}
   - component: {fileID: 7447124675030520100}
   - component: {fileID: 7447124675030520101}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: PopUpCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

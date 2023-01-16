@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e245d6f214e5164b28d8da3b2b5b84c0, type: 3}
   m_Name: level4_30m
   m_EditorClassIdentifier: 
-  <passName>k__BackingField: Level 4 - Pass 30min
-  <validityTime>k__BackingField: 1800
-  <areasUnlocked>k__BackingField: 04000000
-  <rarity>k__BackingField: 20
+  <PassName>k__BackingField: Level 4 - 30min
+  <ValidityTime>k__BackingField: 1800
+  <AreasUnlocked>k__BackingField: 03000000
+  <SpawnRate>k__BackingField: 30
