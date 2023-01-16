@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e245d6f214e5164b28d8da3b2b5b84c0, type: 3}
-  m_Name: levelall_15min
+  m_Name: level4_1h
   m_EditorClassIdentifier: 
-  <passName>k__BackingField: All Levels - Pass 15min
-  <validityTime>k__BackingField: 900
-  <areasUnlocked>k__BackingField: 01000000020000000300000004000000
-  <rarity>k__BackingField: 10
+  <passName>k__BackingField: Level 4 - Pass 1h
+  <validityTime>k__BackingField: 3600
+  <areasUnlocked>k__BackingField: 04000000
+  <rarity>k__BackingField: 40

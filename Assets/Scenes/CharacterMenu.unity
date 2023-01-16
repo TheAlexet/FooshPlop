@@ -3232,6 +3232,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 47d61d334d049740f87d9772195b4d43, type: 2}
   - {fileID: 11400000, guid: 69392a3c22a822e4589096d0dd72ce90, type: 2}
   - {fileID: 11400000, guid: 9e9090cc840eb58e1b2e0b7cc51e5675, type: 2}
+  - {fileID: 11400000, guid: eaa297eab5f7ecab3834e934bddc1df4, type: 2}
+  - {fileID: 11400000, guid: 87be0661115d0032b82d346dd6a11dd1, type: 2}
   lotteryText: {fileID: 514318888}
   LotteryPrice: 1
   popupMenu: {fileID: 7447124673467303320}

@@ -10,7 +10,7 @@ public class DatabaseAccess : MonoBehaviour
     // Make changes from editor only
     [field: SerializeField] public int Acorns { get; private set; }
     [field: SerializeField] public int LotteryTickets { get; private set; }
-    [field: SerializeField] public int LevelsCount { get; private set; } = 4;
+    [field: SerializeField] public int LevelsCount { get; private set; } = 5;
     [field: SerializeField] public float[] LevelsTime { get; private set; }
 
     [SerializeField] private bool ResetPlayerPrefs;
