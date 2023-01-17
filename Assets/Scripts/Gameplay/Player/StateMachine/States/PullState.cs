@@ -9,7 +9,7 @@ public class PullState : NonInteractiveState
     public override void Enter()
     {
         base.Enter();
-        _sm.fishManager.FishingHook.forceNotSplash = false;
+        _sm.fishManager.FishingHook.ForceNotSplash = false;
         _sm.fishManager.FishingHook.SetSplashFX(false);
         _sm.fishManager.FishingHook.gameObject.SetActive(false);
 

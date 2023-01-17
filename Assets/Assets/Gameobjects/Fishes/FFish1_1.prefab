@@ -70,10 +70,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _curState: 
   <Fish>k__BackingField: {fileID: 2284695743871466256}
-  fishArea: {fileID: 0}
-  <fishHead>k__BackingField: {fileID: 3636281233903812597}
-  isBiting: 0
-  isLeaving: 0
+  FishArea: {fileID: 0}
+  <FishHead>k__BackingField: {fileID: 3636281233903812597}
+  IsBiting: 0
+  IsLeaving: 0
 --- !u!114 &2284695743871466256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
     <CatchBeforeDelay>k__BackingField: {x: 3, y: 4}
     <TranslateSpeed>k__BackingField: 1
     <RotateSpeed>k__BackingField: 100
+    <Offset>k__BackingField: {x: 0, y: 0, z: 0}
   useNewBones: 0
 --- !u!1 &6224952298523569302
 GameObject:
@@ -171,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe3851eb485416648dc1ae795c7540d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hookSeen: 0
-  hookBitten: 0
-  hookPosition: {x: 0, y: 0, z: 0}
+  HookSeen: 0
+  HookBitten: 0
+  HookPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &3538595061368363649
 PrefabInstance:
   m_ObjectHideFlags: 0

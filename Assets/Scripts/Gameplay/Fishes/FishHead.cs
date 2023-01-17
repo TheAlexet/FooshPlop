@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FishHead : MonoBehaviour
 {
-    public bool hookSeen;
-    public bool hookBitten;
-    public Vector3 hookPosition;
+    public bool HookSeen;
+    public bool HookBitten;
+    public Vector3 HookPosition;
 
     void OnTriggerEnter(Collider col)
     {
@@ -14,12 +12,12 @@ public class FishHead : MonoBehaviour
         switch (col.gameObject.tag)
         {
             case "HookInfluence":
-                hookSeen = true;
-                hookPosition = col.transform.position;
+                HookSeen = true;
+                HookPosition = col.transform.position;
                 break;
 
             case "Hook":
-                hookBitten = true;
+                HookBitten = true;
                 break;
         }
     }
@@ -30,11 +28,11 @@ public class FishHead : MonoBehaviour
         switch (col.gameObject.tag)
         {
             case "HookInfluence":
-                hookSeen = false;
+                HookSeen = false;
                 break;
 
             case "Hook":
-                hookBitten = false;
+                HookBitten = false;
                 break;
         }
     }

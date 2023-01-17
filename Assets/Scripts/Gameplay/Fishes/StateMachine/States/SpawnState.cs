@@ -13,6 +13,6 @@ public class SpawnState : FishState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        _sm.ChangeState(_sm.randomState);
+        _sm.ChangeState(_sm.RandomState);
     }
 }

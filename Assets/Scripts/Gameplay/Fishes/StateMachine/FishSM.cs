@@ -2,27 +2,31 @@ using UnityEngine;
 
 public class FishSM : StateMachine
 {
-    public SpawnState spawnState { get; }
-    public RandomState randomState { get; }
-    public ToHookState toHookState { get; }
-    public BiteHookState biteHookState { get; }
+    public SpawnState SpawnState { get; }
+    public RandomState RandomState { get; }
+    public ToHookState ToHookState { get; }
+    public BiteHookState BiteHookState { get; }
 
     public FishSM()
     {
-        spawnState = new SpawnState(this);
-        randomState = new RandomState(this);
-        toHookState = new ToHookState(this);
-        biteHookState = new BiteHookState(this);
+        SpawnState = new SpawnState(this);
+        RandomState = new RandomState(this);
+        ToHookState = new ToHookState(this);
+        BiteHookState = new BiteHookState(this);
     }
 
     [field: SerializeField] public Fish Fish { get; private set; }
     public FishData Data { get; private set; }
-    [HideInInspector] public PolygonArea fishArea;
-    [field: SerializeField] public FishHead fishHead { get; private set; }
+    [HideInInspector] public PolygonArea FishArea;
+    public FishHead FishHead { get; private set; }
 
-    public bool isBiting;
-    public bool isLeaving;
+    public bool IsBiting;
+    public bool IsLeaving;
 
-    void Awake() { Data = Fish.Data; }
-    protected override BaseState GetInitialState() { return spawnState; }
+    void Awake()
+    {
+        Data = Fish.Data;
+        FishHead = GetComponentInChildren<FishHead>();
+    }
+    protected override BaseState GetInitialState() { return SpawnState; }
 }

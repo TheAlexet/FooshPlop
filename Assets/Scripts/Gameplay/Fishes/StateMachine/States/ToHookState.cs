@@ -8,15 +8,15 @@ public class ToHookState : MovingState
     public override void Enter()
     {
         base.Enter();
-        destination = _sm.fishHead.hookPosition;
+        destination = _sm.FishHead.HookPosition;
     }
     public override void UpdateLogic()
     {
         base.UpdateLogic();
 
-        if (!_sm.fishHead.hookSeen) _sm.ChangeState(_sm.randomState);
+        if (!_sm.FishHead.HookSeen) _sm.ChangeState(_sm.RandomState);
 
-        if (_sm.fishHead.hookBitten) _sm.ChangeState(_sm.biteHookState);
+        if (_sm.FishHead.HookBitten) _sm.ChangeState(_sm.BiteHookState);
     }
     #endregion
 }

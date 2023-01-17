@@ -37,11 +37,11 @@ public class MovingState : FishState
     protected Vector3 GetDirectionNonNormalized()
     {
         // return (destination - _sm.transform.position - _sm.fishHead.transform.localPosition);
-        return (destination - _sm.fishHead.transform.position);
+        return (destination - _sm.FishHead.transform.position);
     }
     #endregion
 
     #region Reusable Methods
-    protected Vector3 NextRandomDestination() { return _sm.fishArea.RandomPoint(); }
+    protected Vector3 NextRandomDestination() { return _sm.FishArea.RandomPoint(); }
     #endregion
 }

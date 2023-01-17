@@ -8,7 +8,7 @@ public class FishSpawner : MonoBehaviour
     public GameObject SpawnFish(GameObject fish, PolygonArea fishArea)
     {
         GameObject curFish = GameObject.Instantiate(fish);
-        fish.GetComponent<FishSM>().fishArea = fishArea;
+        fish.GetComponent<FishSM>().FishArea = fishArea;
         curFish.transform.position = fishArea.RandomPoint();
         curFish.transform.localScale = fishScale * curFish.transform.localScale;
         return curFish;

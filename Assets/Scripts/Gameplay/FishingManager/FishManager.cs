@@ -80,8 +80,8 @@ public class FishManager : MonoBehaviour
 
         if (currentFish != null)
         {
-            isBiting = currentFish.GetComponent<FishSM>().isBiting;
-            isLeaving = currentFish.GetComponent<FishSM>().isLeaving;
+            isBiting = currentFish.GetComponent<FishSM>().IsBiting;
+            isLeaving = currentFish.GetComponent<FishSM>().IsLeaving;
         }
         else
         {
@@ -116,7 +116,7 @@ public class FishManager : MonoBehaviour
         GameObject curFish = GameObject.Instantiate(fish);
         curFish.transform.position = fishArea.RandomPoint();
         curFish.transform.localScale = SceneData.FishScale * curFish.transform.localScale;
-        curFish.GetComponent<FishSM>().fishArea = fishArea;
+        curFish.GetComponent<FishSM>().FishArea = fishArea;
         return curFish;
     }
 

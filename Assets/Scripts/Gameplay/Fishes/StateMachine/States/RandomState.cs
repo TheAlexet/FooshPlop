@@ -16,9 +16,9 @@ public class RandomState : MovingState
     {
         base.UpdateLogic();
 
-        if (_sm.fishHead.hookSeen)
+        if (_sm.FishHead.HookSeen)
         {
-            _sm.ChangeState(_sm.toHookState);
+            _sm.ChangeState(_sm.ToHookState);
             return;
         }
 

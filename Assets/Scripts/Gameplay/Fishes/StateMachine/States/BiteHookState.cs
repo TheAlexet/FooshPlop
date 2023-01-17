@@ -9,7 +9,7 @@ public class BiteHookState : FishState
     public override void Enter()
     {
         base.Enter();
-        _sm.isBiting = true;
+        _sm.IsBiting = true;
 
         timeSinceBitten = 0f;
         delayBeforeCanLeave = DelayBefore(_sm.Data.CatchBeforeDelay);
@@ -19,10 +19,10 @@ public class BiteHookState : FishState
     {
         base.UpdateLogic();
 
-        if (!_sm.fishHead.hookBitten) { _sm.ChangeState(_sm.randomState); }
+        if (!_sm.FishHead.HookBitten) { _sm.ChangeState(_sm.RandomState); }
 
         timeSinceBitten += Time.deltaTime;
         if (timeSinceBitten > delayBeforeCanLeave)
-            _sm.isLeaving = true;
+            _sm.IsLeaving = true;
     }
 }
