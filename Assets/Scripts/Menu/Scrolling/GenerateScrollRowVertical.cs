@@ -13,7 +13,6 @@ public class GenerateScrollRowVertical : MonoBehaviour
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Transform parent;
     GameObject last_row;
-    [SerializeField] private Button MyButton = null; // assign in the editor
     List<GameObject> fishesInstantiated;
     [SerializeField] GameObject fishDataMenu;
     [SerializeField] TMPro.TextMeshProUGUI fishName;

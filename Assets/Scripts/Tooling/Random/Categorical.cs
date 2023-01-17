@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Categorical : MonoBehaviour
+public static class Categorical
 {
     public static int Choice(List<float> probs)
     {

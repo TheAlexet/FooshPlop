@@ -1,3 +1,5 @@
+/// Same as original ScrollRect but modified speed for scrolling 
+
 using System;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;

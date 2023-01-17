@@ -17,7 +17,7 @@ public class GenerateFishContent : MonoBehaviour
             fishButton.name = fish.name;
 
             GameObject fishOject = GameObject.Instantiate(fish, fishButton.transform.GetChild(0));
-            Destroy(fishOject.GetComponent<FishMovement>());
+            // Destroy(fishOject.GetComponent<FishMovement>());
             Destroy(fishOject.GetComponent<FishOnSpawn>());
         }
     }
