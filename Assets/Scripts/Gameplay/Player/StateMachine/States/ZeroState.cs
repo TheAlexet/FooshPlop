@@ -8,6 +8,12 @@ public class ZeroState : InteractiveState
 
     float timer = 0.0f;
 
+    public override void Enter()
+    {
+        base.Enter();
+        timer = 0.0f;
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();
@@ -20,11 +26,11 @@ public class ZeroState : InteractiveState
             _sm.playerAnimator.SetTrigger("Cast");
             stateMachine.ChangeState(_sm.castState);
         }
-        else if(timer >= 10)
+        else if (timer >= 10)
         {
             _sm.tutorialMenu.SetActive(true);
         }
-        else if(Database.isFirstGame())
+        else if (Database.isFirstGame())
         {
             _sm.tutorialMenu.SetActive(true);
             Database.setFirstGame();
